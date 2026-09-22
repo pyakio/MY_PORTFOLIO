@@ -1,71 +1,88 @@
-# ⚡ MY_PORTFOLIO — Abhay Narayan Singh
+# Portfolio — Abhay Narayan Singh
 
-> A modern, high-performance developer portfolio built with a dark aesthetic, fluid scroll animations, and real-time LeetCode & GitHub stats integration.
-
-![Portfolio Banner](assets/images/pfp.png)
+A fast, accessible, lightweight personal portfolio website engineered with semantic HTML5, modern CSS3 design tokens, and clean vanilla JavaScript.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎨 **Modern Dark Aesthetic**: Clean capsule navigation with glassmorphism backdrop blur (`backdrop-filter: blur(12px)`), dot grid background, and dynamic top-left / down-right green ambient scroll lighting.
-- 👨‍💻 **Hero Profile**: Custom avatar presentation, verified status badge, quick resume download (`Resume / CV`), and social profile quick-links.
-- 🚀 **Featured Projects Grid**: Highlights core projects with NMC-compliant prescription tools (*Digital RX*), AI trip planners (*TripSmart AI*), placement Kanban dashboards (*PrepTrack*), and hyperlocal kirana store portals (*SthaniyaVendor*).
-- 📊 **Real-Time Coding Stats**: 52-week contribution heatmap grid synced live with **LeetCode API** (`abhaysingh79`) & **GitHub** (`pyakio`), rendering active submission tiles and difficulty breakdowns (Easy, Medium, Hard).
-- 🏆 **Milestone Accordions**: Interactive accordion cards displaying key certifications (*CodeTantra*, *Parul University*, *NPTEL IIT Kharagpur*).
-- 📱 **Fully Responsive**: Tailored layout supporting desktop, tablet, and mobile viewports.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML5, Vanilla CSS3 (Custom Design Tokens), JavaScript (ES6+)
-- **APIs**: LeetCode Public REST API (`alfa-leetcode-api`, `leetcode-api-faisalshohag`)
-- **Icons & Typography**: Plus Jakarta Sans, JetBrains Mono, Custom SVG Tech Icons
+- **Linear / Vercel Dark Aesthetic**: Restrained dark theme using CSS design tokens, subtle borders, clean typography, and performance-conscious ambient accents.
+- **Hero & Profile**: Focused developer presentation highlighting core capabilities, direct repository access, and contact CTAs.
+- **About Section**: Concise background detailing technical specializations, design philosophy, and primary stack.
+- **Featured Projects**: Product-focused cards for major work (*DocMind AI* and *MailPilot*) with technology badges, direct repository links, and interactive product case studies.
+- **Interactive Case Studies**: Built-in, accessible modal dialogs detailing problem statements, system architecture, engineering challenges, and current project status.
+- **Continuous Coding Activity**: Real-time synced LeetCode metrics and an interactive 52-week submission heatmap with year filtering (2024, 2025, 2026), dynamic streak calculation, and graceful offline fallbacks.
+- **Achievements & Accreditations**: Verified credentials with high-resolution certificate viewing and PDF downloads for AWS certifications, alongside semantic expandable accordions for coursework milestones.
+- **Responsive & Accessible**: Native mobile navigation drawer with keyboard trap (Escape key dismiss), skip-to-content links, `:focus-visible` states, and `prefers-reduced-motion` support across viewports from 320px to 1920px.
 
 ---
 
-## 📁 Repository Structure
+## Tech Stack
+
+- **Frontend**: HTML5 (Semantic Structure), CSS3 (Custom Variables, Flexbox, Grid), JavaScript (ES6+)
+- **Typography**: Plus Jakarta Sans, JetBrains Mono
+- **Live Data**: LeetCode Public REST APIs (active submission history & difficulty breakdown)
+- **Deployment**: Zero build-step static site ready for GitHub Pages, Vercel, Netlify, or Cloudflare Pages
+
+---
+
+## Project Structure
 
 ```
 portfolio/
-├── index.html          # Main HTML markup & semantic structure
+├── index.html              # Main HTML markup & semantic structure
 ├── css/
-│   └── style.css       # Complete CSS design system, layout, & ambient glows
+│   └── style.css           # Complete design system tokens, responsive layout, & modals
 ├── js/
-│   └── script.js       # Heatmap generator, live LeetCode fetch, scroll spy
+│   └── script.js           # Heatmap renderer, LeetCode live sync, modals & mobile nav
 ├── assets/
-│   ├── images/         # Profile avatar, project screenshots, footer artwork
-│   └── resume/         # Resume PDF file
-└── README.md           # Documentation
+│   ├── images/             # Profile avatar, project screenshots, footer artwork
+│   ├── certificates/       # Verified certification PDFs
+│   └── resume/             # Resume / CV PDF storage
+├── .gitignore              # Ignored operating system, editor, and log files
+└── README.md               # Technical project documentation
 ```
 
 ---
 
-## 🚀 Local Development
+## Running Locally
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/pyakio/MY_PORTFOLIO.git
-   cd MY_PORTFOLIO
-   ```
+Because this project uses vanilla web standards with no compilation or package bundling steps, you can serve it locally using any lightweight static server:
 
-2. **Open in browser**:
-   Open `index.html` directly in your browser or run with Live Server:
-   ```bash
-   npx serve .
-   ```
+```bash
+# Option 1: Using Python 3
+python3 -m http.server 8000
+
+# Option 2: Using Node.js (npx serve)
+npx serve .
+```
+
+Then open `http://localhost:8000` in your web browser.
 
 ---
 
-## 👨‍💻 Author
+## Deployment
+
+### GitHub Pages
+1. Push the repository to GitHub.
+2. In your repository settings, navigate to **Pages**.
+3. Under **Build and deployment**, set the branch to `main` and root directory to `/ (root)`.
+4. Save to deploy.
+
+---
+
+## Author
 
 **Abhay Narayan Singh**
-- 🌐 **GitHub**: [@pyakio](https://github.com/pyakio)
-- 🧩 **LeetCode**: [@abhaysingh79](https://leetcode.com/u/abhaysingh79/)
-- 💼 **LinkedIn**: [Abhay Narayan Singh](https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/)
-- 📧 **Email**: kmrsingh116@gmail.com
+- **GitHub**: [@pyakio](https://github.com/pyakio)
+- **LinkedIn**: [Abhay Narayan Singh](https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/)
+- **LeetCode**: [@abhaysingh79](https://leetcode.com/u/abhaysingh79/)
+- **Email**: kmrsingh116@gmail.com
 
 ---
 
-© 2026 Abhay Narayan Singh. All Rights Reserved.
+## Links
+
+- **Repository**: [https://github.com/pyakio/MY_PORTFOLIO](https://github.com/pyakio/MY_PORTFOLIO)
+- **DocMind AI**: [https://github.com/pyakio/docmind-ai](https://github.com/pyakio/docmind-ai)
+- **MailPilot**: [https://github.com/pyakio/MailPilot](https://github.com/pyakio/MailPilot)

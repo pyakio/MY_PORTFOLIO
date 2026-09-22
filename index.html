@@ -1,528 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abhay Singh | Full Stack Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhay Narayan Singh | Full-Stack Developer</title>
+  
+  <!-- SEO & Social Metadata -->
+  <meta name="description" content="Portfolio of Abhay Narayan Singh — Full-Stack Developer specializing in React, Node.js, Express, and practical AI applications.">
+  <meta name="author" content="Abhay Narayan Singh">
+  <meta name="theme-color" content="#09090b">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <!-- Replace https://yourdomain.com with your live deployed URL when ready -->
+  <meta property="og:url" content="https://pyakio.github.io/">
+  <meta property="og:title" content="Abhay Narayan Singh | Full-Stack Developer">
+  <meta property="og:description" content="Full-stack developer building practical web applications, AI-powered products, and developer tools.">
+  <meta property="og:image" content="assets/images/pfp.png">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Abhay Narayan Singh | Full-Stack Developer">
+  <meta name="twitter:description" content="Full-stack developer building practical web applications, AI-powered products, and developer tools.">
+  <meta name="twitter:image" content="assets/images/pfp.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- STICKY HEADER NAVBAR -->
-<header>
-  <div class="navbar">
-    <div class="logo">Abhay<span class="dot">.</span></div>
-    <nav class="nav-links" id="navTabs">
-      <a href="#hero" class="nav-item active">Home</a>
-      <a href="#projects" class="nav-item">Projects</a>
-      <a href="#skills" class="nav-item">Skills</a>
-      <a href="#stats" class="nav-item">Stats</a>
-      <a href="#achievements" class="nav-item">Achievements</a>
-      <a href="#contact" class="nav-item">Contact</a>
-    </nav>
-  </div>
-</header>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="wrap">
+  <!-- STICKY HEADER & NAVBAR -->
+  <header class="site-header">
+    <div class="navbar">
+      <a href="#hero" class="logo" aria-label="Abhay Singh home">
+        Abhay<span class="dot">.</span>
+      </a>
 
-  <!-- HERO SECTION -->
-  <section id="hero">
-    <div class="hero-card">
-      <div class="hero-banner"></div>
-      <div class="hero-body">
-        <div class="avatar">
-          <img src="assets/images/pfp.png" alt="Abhay Narayan Singh">
-        </div>
-        <div class="name-row">
-          <h1>Abhay Narayan Singh</h1>
-          <span class="verified-badge" title="Verified Developer">✓</span>
-        </div>
-        <div class="role-line">Full Stack Developer • Problem Solver • Builder</div>
-        <p class="hero-desc">
-          Building, breaking, and rebooting my way through the tech world.. :)
-          I build end-to-end products from idea to production — working across frontend,
-          backend, and AI systems.
-        </p>
-        <div class="resume-row">
-          <a href="assets/resume/resume.pdf" target="_blank" class="btn primary-btn">
-            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            Resume / CV
-          </a>
-        </div>
-        <div class="internet-line">Me on <strong>Internet!</strong></div>
-        <div class="social-pills">
-          <a href="mailto:kmrsingh116@gmail.com" class="social-pill">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            Email
-          </a>
-          <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="social-pill">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/" target="_blank" rel="noopener" class="social-pill">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="social-pill">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
-            LeetCode
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Desktop Navigation -->
+      <nav class="nav-links" id="navTabs" aria-label="Primary navigation">
+        <a href="#hero" class="nav-item active">Home</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#stats" class="nav-item">Stats</a>
+        <a href="#achievements" class="nav-item">Achievements</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </nav>
 
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="section-block">
-    <div class="sec-head">
-      <div class="eyebrow">FEATURED WORK</div>
-      <h2>Things I've built</h2>
-      <p>A selection of projects I've built — from full-stack web apps to AI-powered tools.</p>
+      <!-- Mobile Menu Button -->
+      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavMenu">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
     </div>
 
-    <div class="project-grid">
-
-      <!-- Project 1: Digital RX -->
-      <div class="project-card">
-        <div class="project-thumb">
-          <img src="assets/images/digital_rx.png" alt="Digital RX Screenshot" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="fallback-mockup digital-rx-bg" style="display:none;">
-            <div class="mock-window">
-              <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">Digital RX Dashboard</span></div>
-              <div class="mock-content medical">
-                <div class="mock-sidebar">
-                  <div class="mock-line w80 green"></div>
-                  <div class="mock-line w60"></div>
-                  <div class="mock-line w70"></div>
-                </div>
-                <div class="mock-main">
-                  <div class="mock-box header-box">Doctor Prescription System</div>
-                  <div class="mock-table">
-                    <div class="mock-row"><span></span><span></span><span></span></div>
-                    <div class="mock-row"><span></span><span></span><span></span></div>
-                  </div>
-                  <div class="mock-btn-whatsapp">Send via WhatsApp</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-top">
-            <h3>Digital RX</h3>
-            <div class="pill-row">
-              <a href="#" class="pill-btn"><span class="pill-icon">📖</span> Case Study</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">🔗</span> Live</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">💻</span> Code</a>
-            </div>
-          </div>
-          <p>Digitalizes busy clinic workflows enabling doctors to create NMC-compliant prescriptions and silently deliver them to patients via WhatsApp — with zero paperwork.</p>
-          <div class="tag-row">
-            <span class="tag"><span class="t-icon react-icon">⚛</span> React</span>
-            <span class="tag"><span class="t-icon vite-icon">⚡</span> Vite</span>
-            <span class="tag"><span class="t-icon node-icon">🟩</span> Node.js</span>
-            <span class="tag"><span class="t-icon express-icon">⚙</span> Express</span>
-            <span class="tag"><span class="t-icon whatsapp-icon">💬</span> Baileys</span>
-            <span class="tag"><span class="t-icon electron-icon">⚛</span> Electron</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2: TripSmart AI -->
-      <div class="project-card">
-        <div class="project-thumb">
-          <img src="assets/images/tripsmart_ai.png" alt="TripSmart AI Screenshot" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="fallback-mockup tripsmart-bg" style="display:none;">
-            <div class="mock-window">
-              <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">TripSmart AI</span></div>
-              <div class="mock-content travel">
-                <div class="mock-map">Map View</div>
-                <div class="mock-itinerary">
-                  <div class="mock-card-sm">Flight Info</div>
-                  <div class="mock-card-sm">Hotel Booking</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-top">
-            <h3>TripSmart AI</h3>
-            <div class="pill-row">
-              <a href="#" class="pill-btn"><span class="pill-icon">📖</span> Case Study</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">🔗</span> Live</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">💻</span> Code</a>
-            </div>
-          </div>
-          <p>Eliminates travel planning fragmentation by unifying budgeting, scheduling, and booking in one intelligent AI-powered platform with real-time currency conversion.</p>
-          <div class="tag-row">
-            <span class="tag"><span class="t-icon react-icon">⚛</span> React</span>
-            <span class="tag"><span class="t-icon redux-icon">🟣</span> Redux</span>
-            <span class="tag"><span class="t-icon node-icon">🟩</span> Node.js</span>
-            <span class="tag"><span class="t-icon postgres-icon">🐘</span> PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3: PrepTrack -->
-      <div class="project-card">
-        <div class="project-thumb">
-          <img src="assets/images/preptrack.png" alt="PrepTrack Screenshot" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="fallback-mockup preptrack-bg" style="display:none;">
-            <div class="mock-window">
-              <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">PrepTrack Kanban</span></div>
-              <div class="mock-content dark-kanban">
-                <div class="mock-col-kanban">Column 1</div>
-                <div class="mock-col-kanban">Column 2</div>
-                <div class="mock-col-kanban">Column 3</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-top">
-            <h3>PrepTrack</h3>
-            <div class="pill-row">
-              <a href="#" class="pill-btn"><span class="pill-icon">📖</span> Case Study</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">💻</span> Code</a>
-            </div>
-          </div>
-          <p>Unifies the entire placement preparation workflow — LeetCode tracking, daily tasks, goals, study resources, and Kanban interview boards — in one MERN platform.</p>
-          <div class="tag-row">
-            <span class="tag"><span class="t-icon react-icon">⚛</span> React</span>
-            <span class="tag"><span class="t-icon mongo-icon">🍃</span> MongoDB</span>
-            <span class="tag"><span class="t-icon node-icon">🟩</span> Node.js</span>
-            <span class="tag"><span class="t-icon express-icon">⚙</span> Express</span>
-            <span class="tag"><span class="t-icon zustand-icon">🐻</span> Zustand</span>
-            <span class="tag"><span class="t-icon jwt-icon">🔑</span> JWT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4: SthaniyaVendor -->
-      <div class="project-card">
-        <div class="project-thumb">
-          <img src="assets/images/sthaniyavendor.png" alt="SthaniyaVendor Screenshot" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="fallback-mockup sthaniya-bg" style="display:none;">
-            <div class="mock-window">
-              <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">SthaniyaVendor Mobile</span></div>
-              <div class="mock-content mobile-dual">
-                <div class="mock-phone">QR Scanner</div>
-                <div class="mock-phone">Kirana Store</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-top">
-            <h3>SthaniyaVendor</h3>
-            <div class="pill-row">
-              <a href="#" class="pill-btn"><span class="pill-icon">📖</span> Case Study</a>
-              <a href="#" class="pill-btn"><span class="pill-icon">💻</span> Code</a>
-            </div>
-          </div>
-          <p>Hyperlocal vendor portal — helps kirana stores digitize with AI voice + image inventory (Gemini + TensorFlow.js), UPI QR billing, barcode scanning, and an offline-first buyer discovery mobile app.</p>
-          <div class="tag-row">
-            <span class="tag"><span class="t-icon react-icon">⚛</span> React</span>
-            <span class="tag"><span class="t-icon fastapi-icon">⚡</span> FastAPI</span>
-            <span class="tag"><span class="t-icon python-icon">🐍</span> Python</span>
-            <span class="tag"><span class="t-icon native-icon">📱</span> React Native</span>
-            <span class="tag"><span class="t-icon gemini-icon">✦</span> Gemini AI</span>
-            <span class="tag"><span class="t-icon postgres-icon">🐘</span> PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="view-all-wrap">
-      <a href="#projects" class="btn ghost-btn">Show all projects →</a>
-    </div>
-  </section>
-
-  <!-- TECHNICAL SKILLS SECTION -->
-  <section id="skills" class="section-block">
-    <div class="sec-head">
-      <div class="eyebrow">WHAT I KNOW</div>
-      <h2>Technical Skills</h2>
-      <p>A curated set of languages, frameworks, and tools I use to build things.</p>
-    </div>
-
-    <div class="skills-grid">
-      <!-- Category 1: Languages -->
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <span class="header-symbol">&lt;/&gt;</span> LANGUAGES
-        </div>
-        <div class="skill-list">
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#F7DF1E"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 3h18v18H3V3zm16.525 14.51c-.246-.432-.676-.79-1.398-1.077-.478-.184-1.127-.34-1.637-.47-.442-.113-.7-.226-.81-.353-.133-.153-.178-.328-.178-.52 0-.256.096-.465.312-.628.214-.162.535-.246.963-.246.438 0 .787.098 1.05.295.263.197.45.45.56.76.082.23.118.345.248.345.14 0 .346-.145.346-.405 0-.17-.042-.353-.127-.55-.183-.424-.5-.783-.95-1.077-.45-.295-1.048-.442-1.794-.442-.81 0-1.488.196-2.034.588-.546.39-.818.927-.818 1.61 0 .47.126.877.378 1.22.25.344.62.613 1.11.808.49.195 1.13.36 1.92.51.52.1.88.22 1.08.36.2.14.3.34.3.6 0 .32-.13.57-.39.75-.26.18-.65.27-1.17.27-.58 0-1.05-.12-1.41-.37-.36-.25-.6-.59-.72-1.02-.05-.18-.1-.28-.24-.28-.14 0-.32.14-.32.39 0 .16.05.37.15.63.2.53.56.96 1.08 1.29.52.33 1.22.49 2.1.49.91 0 1.65-.2 2.22-.6.57-.4.86-.97.86-1.71 0-.52-.13-.96-.39-1.33z"/></svg>
-            JavaScript
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#5382A1"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.87.187 4.949-.214 0 0 .524.321 1.462.548-2.613 1.4-8.08.76-7.064-1.048zm.094-3.791s-1.157.77.414.939c1.92.206 3.754.195 6.305-.285 0 0 .373.344 1.066.524-3.411 1.282-9.473.818-7.785-1.178zm6.541-4.238c.613.782.38 1.636-.245 2.197-.847.76-2.147 1.031-2.147 1.031s.35-.371.21-.767c-.208-.59-1.127-.723-1.777-.384-.576.3-.962.83-.902 1.46.069.72 1.092 1.34 2.84 1.1 2.378-.328 3.526-1.57 2.021-4.637zm-2.825-7.39c.602 1.042-.119 2.05-.119 2.05s.767-.78.118-1.597c-.648-.817-1.189-1.144-.65-2.033.407-.669 1.109-1.283.651 1.58zm6.239 12.019c-1.393.305-3.08.435-4.577.291-2.483-.24-5.263-.997-6.07-2.158-.291-.418-.285-.808.06-1.161.642-.66 2.021-1.038 3.541-1.184 0 0-.585-.503-1.186-.689-2.316.326-4.103 1.154-4.28 2.336-.217 1.442 1.497 2.593 3.655 3.167 2.871.764 7.025.59 8.857-.602zm-3.664-9.397c.502.823.181 1.956.181 1.956s.621-1.043-.105-1.74c-.727-.697-1.134-1.35-.417-2.106.541-.572.843-1.002.341 1.89z"/></svg>
-            Java
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#3776AB"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.875 3.75h3.75v3.75h-3.75V3.75zm5.625 5.625h3.75v3.75h-3.75v-3.75zM10.125 15h3.75v3.75h-3.75V15z"/></svg>
-            Python
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#00599C"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3 10.5h-2v-2h-2v2H9v2h2v2h2v-2h2v-2zm5 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z"/></svg>
-            C++
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#E34F26"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.78-2.928-.78-.188-2.091H6.248l.33 4.141 5.423 1.503 5.419-1.503.715-8.204H8.531z"/></svg>
-            HTML5
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#1572B6"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.78-2.928-.78-.188-2.091H6.248l.33 4.141 5.423 1.503 5.419-1.503.715-8.204H8.531z"/></svg>
-            CSS3
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 2: Frameworks -->
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <span class="header-symbol">⬡</span> FRAMEWORKS
-        </div>
-        <div class="skill-list">
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#61DAFB"><circle cx="12" cy="12" r="2.055"/><g stroke="#61DAFB" stroke-width="1" fill="none"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
-            React.js
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#339933"><path d="M12 2.25L2.25 7.875v11.25L12 24.75l9.75-5.625V7.875L12 2.25zM12 16.5l-4.5-2.625v-5.25L12 11.25l4.5-2.625v5.25L12 16.5z"/></svg>
-            Node.js
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#828282"><path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-4.7 0c0-4.032-3.268-7.3-7.3-7.3-4.032 0-7.3 3.268-7.3 7.3 0 4.032 3.268 7.3 7.3 7.3 4.032 0 7.3-3.268 7.3-7.3z"/></svg>
-            Express.js
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#47A248"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            MongoDB
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#06B6D4"><path d="M12 6C9.243 6 7.42 7.38 6.533 10.14c.977-1.38 2.133-1.875 3.467-1.485 1.333.39 2.222 1.77 3.11 3.15 1.446 2.247 3.124 4.855 7.778 4.855 2.757 0 4.58-1.38 5.467-4.14-.978 1.38-2.133 1.875-3.467 1.485-1.333-.39-2.222-1.77-3.11-3.15C18.333 8.608 16.655 6 12 6z"/></svg>
-            Tailwind
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#000000"><path fill="#fff" d="M12 2L2 22h20L12 2zm0 4.5L18.5 19.5h-13L12 6.5z"/></svg>
-            Three.js
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 3: Tools -->
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <span class="header-symbol">🛠</span> TOOLS
-        </div>
-        <div class="skill-list">
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#F05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.719.721.719 1.884 0 2.604-.719.719-1.883.719-2.602 0-.719-.72-.719-1.883 0-2.604.175-.175.377-.305.594-.388V8.895c-.217-.083-.419-.213-.594-.388-.532-.533-.672-1.318-.419-1.973L7.546 3.788 1.454 9.88c-.604.604-.604 1.582 0 2.188l10.479 10.478c.604.604 1.582.604 2.188 0l10.425-10.425c.606-.603.606-1.58 0-2.19z"/></svg>
-            Git
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#007ACC"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.12a.807.807 0 0 0-1.026.07L.296 7.604a.8.8 0 0 0 .003 1.155l3.82 3.24-3.82 3.24a.8.8 0 0 0-.003 1.155l1.603 1.524a.807.807 0 0 0 1.026.07l4.12-3.12 9.46 8.63c.48.44 1.19.53 1.705.29l4.94-2.377A1.5 1.5 0 0 0 24 20.06V3.94a1.5 1.5 0 0 0-.85-1.353z"/></svg>
-            VS Code
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6C37"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.666 8.443l-3.21 2.378a.499.499 0 0 0-.173.551l1.226 3.774a.5.5 0 0 1-.77.559L11.53 13.33a.498.498 0 0 0-.586 0l-3.21 2.377a.5.5 0 0 1-.769-.56l1.226-3.773a.5.5 0 0 0-.174-.551L4.808 8.443a.5.5 0 0 1 .294-.904h3.968a.5.5 0 0 0 .475-.345l1.226-3.774a.5.5 0 0 1 .95 0l1.226 3.774a.5.5 0 0 0 .475.345h3.968a.5.5 0 0 1 .294.904z"/></svg>
-            Postman
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#F24E1E"><path d="M12 0H6C2.686 0 0 2.686 0 6s2.686 6 6 6h6V0z"/><circle cx="18" cy="6" r="6" fill="#FF7262"/><circle cx="18" cy="18" r="6" fill="#1ABCFE"/><path d="M12 12H6c-3.314 0-6 2.686-6 6s2.686 6 6 6-2.686 6-6v-6z" fill="#0ACF83"/><circle cx="6" cy="6" r="6" fill="#F24E1E"/><circle cx="6" cy="18" r="6" fill="#A259FF"/></svg>
-            Figma
-          </div>
-          <div class="skill-pill">
-            <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#22c55e"><path d="M12 2L9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27 18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2z"/></svg>
-            Prompt Eng.
-          </div>
-        </div>
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-menu" id="mobileNavMenu" aria-hidden="true">
+      <nav class="mobile-nav-links" aria-label="Mobile navigation">
+        <a href="#hero" class="mobile-nav-item">Home</a>
+        <a href="#about" class="mobile-nav-item">About</a>
+        <a href="#projects" class="mobile-nav-item">Projects</a>
+        <a href="#skills" class="mobile-nav-item">Skills</a>
+        <a href="#stats" class="mobile-nav-item">Stats</a>
+        <a href="#achievements" class="mobile-nav-item">Achievements</a>
+        <a href="#contact" class="mobile-nav-item">Contact</a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="assets/resume/Abhay_Narayan_Singh_Resume-2.pdf" target="_blank" rel="noopener" class="btn ghost-btn btn-sm">Resume / CV</a>
+        <a href="mailto:kmrsingh116@gmail.com" class="btn primary-btn btn-sm">Get in Touch</a>
       </div>
     </div>
-  </section>
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+  </header>
 
-  <!-- CODING STATS SECTION -->
-  <section id="stats" class="section-block">
-    <div class="sec-head">
-      <div class="eyebrow">ENGINEERING IMPACT</div>
-      <h2>Coding Stats</h2>
-      <p>Real-time metrics from my active coding profiles.</p>
-    </div>
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="main-content" class="wrap">
 
-    <div class="stats-layout">
-      <!-- GitHub Card -->
-      <div class="gh-card">
-        <div class="gh-top">
-          <div class="gh-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GITHUB
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-card">
+        <div class="hero-banner" aria-hidden="true"></div>
+        <div class="hero-body">
+          <div class="avatar-wrap">
+            <img src="assets/images/pfp.png" alt="Abhay Narayan Singh" width="108" height="108" decoding="async" class="avatar-img">
           </div>
-          <div class="gh-meta">
-            <span>TOTAL <strong id="totalCommits" class="white-txt">148</strong></span>
-            <span>STREAK <strong id="streakVal" class="green-txt">3</strong></span>
+          
+          <div class="name-row">
+            <h1 id="hero-title">Abhay Narayan Singh</h1>
           </div>
-        </div>
-        <div class="year-tabs">
-          <button type="button" class="year-btn">2024</button>
-          <button type="button" class="year-btn">2025</button>
-          <button type="button" class="year-btn active">2026</button>
-        </div>
-        <div class="month-labels">
-          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
-          <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
-        </div>
-        <div class="heat-grid" id="heatGrid"></div>
-      </div>
+          
+          <div class="role-badge">
+            <span class="status-indicator" aria-hidden="true"></span>
+            Full-Stack Developer
+          </div>
 
-      <!-- Stats Row 2 -->
-      <div class="stats-row2">
-        <!-- LeetCode Card -->
-        <div class="stat-card">
-          <div class="card-head">
-            <span class="stat-platform-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFA116"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
-              LEETCODE
-            </span>
-            <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="ext-link" aria-label="LeetCode Profile">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <p class="hero-pitch">
+            Building practical web applications, AI-powered products, and developer tools.
+          </p>
+
+          <p class="hero-desc">
+            I design and engineer end-to-end software from concept to production — working across clean frontend interfaces, resilient backend APIs, and applied AI systems.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn primary-btn">
+              View Projects
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+            <a href="#contact" class="btn ghost-btn">
+              Contact Me
+            </a>
+            <a href="assets/resume/Abhay_Narayan_Singh_Resume-2.pdf" target="_blank" rel="noopener" class="btn ghost-btn resume-btn" id="resumeBtn" title="Download Resume / CV (PDF)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Resume / CV
             </a>
           </div>
-          <div class="big-num" id="lcTotal">121</div>
-          <div class="num-label">Problems Solved</div>
-          <div class="diff-labels">
-            <span class="easy-txt" id="lcEasy">Easy 75</span>
-            <span class="med-txt" id="lcMed">Med 42</span>
-            <span class="hard-txt" id="lcHard">Hard 4</span>
+
+          <div class="connect-label">Connect with me</div>
+          <div class="social-pills">
+            <a href="mailto:kmrsingh116@gmail.com" class="social-pill" title="Send Email">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Email
+            </a>
+            <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="social-pill" title="GitHub Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/" target="_blank" rel="noopener" class="social-pill" title="LinkedIn Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="social-pill" title="LeetCode Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
+              LeetCode
+            </a>
+
+            <!-- Social Placeholders: Kept configurable via js/script.js without fake URLs -->
+            <a href="" class="social-pill social-placeholder" id="instagramPill" style="display:none;" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="" class="social-pill social-placeholder" id="xPill" style="display:none;" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              X (Twitter)
+            </a>
           </div>
-          <div class="diff-bar">
-            <span class="bar-easy" id="lcEasyBar" style="width: 62%;"></span>
-            <span class="bar-med" id="lcMedBar" style="width: 34.7%;"></span>
-            <span class="bar-hard" id="lcHardBar" style="width: 3.3%;"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION (NEW - HIGH VALUE CONCISE BACKGROUND) -->
+    <section id="about" class="section-block" aria-labelledby="about-title">
+      <div class="sec-head">
+        <div class="eyebrow">ABOUT ME</div>
+        <h2 id="about-title">Background &amp; Focus</h2>
+        <p>A pragmatic approach to building modern software products.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-narrative">
+          <p>
+            I am a full-stack developer who enjoys transforming complex product requirements into clean, performant, and reliable web applications. My core engineering stack centers around React and modern JavaScript on the frontend, with Node.js, Express, and MongoDB on the backend.
+          </p>
+          <p>
+            I place high value on software correctness, responsive UI craftsmanship, and maintainable system architecture over unnecessary complexity. My recent work focuses on document intelligence pipelines, conversational AI integrations, and cloud-automated communication systems.
+          </p>
+          <p>
+            Currently, I am actively sharpening my knowledge in scalable backend design, cloud architectures (AWS), and algorithmic problem solving on LeetCode.
+          </p>
+        </div>
+
+        <div class="about-meta-card">
+          <div class="about-meta-item">
+            <span class="meta-label">ROLE</span>
+            <span class="meta-val">Full-Stack Software Developer</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">FOCUS AREAS</span>
+            <span class="meta-val">Web Applications, AI Integration, Cloud APIs</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">PRIMARY STACK</span>
+            <span class="meta-val">React, Node.js, Express, MongoDB, REST</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">STATUS</span>
+            <span class="meta-val highlight-green">Available for Software Roles &amp; Projects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section-block" aria-labelledby="projects-title">
+      <div class="sec-head">
+        <div class="eyebrow">FEATURED WORK</div>
+        <h2 id="projects-title">Featured Projects</h2>
+        <p>A selection of full-stack products engineered from concept to implementation.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- Project 1: DocMind AI -->
+        <article class="project-card" data-project-id="docmind">
+          <div class="project-thumb">
+            <img src="assets/images/docmind_ai.png" alt="DocMind AI - Document Intelligence Interface" class="thumb-img" width="1376" height="768" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fallback-mockup docmind-bg" style="display:none;" aria-hidden="true">
+              <div class="mock-window">
+                <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">DocMind AI Assistant</span></div>
+                <div class="mock-content">
+                  <div class="mock-sidebar"><div class="mock-line w80 green"></div><div class="mock-line w60"></div><div class="mock-line w70"></div></div>
+                  <div class="mock-main"><div class="mock-box">Document Intelligence &amp; Chat</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">DocMind AI</h3>
+                <span class="project-pitch">Full-Stack AI Document Intelligence Platform</span>
+              </div>
+              <span class="status-pill status-dev">Currently in development</span>
+            </div>
+
+            <p class="project-desc">
+              Transforms uploaded documents into an interactive knowledge base with context-aware retrieval, conversational Q&amp;A, and persistent session history.
+            </p>
+
+            <div class="tag-row" aria-label="Technologies used">
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><circle cx="12" cy="12" r="2.055"/><g stroke="#61DAFB" stroke-width="1.2" fill="none"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
+                React.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#339933" aria-hidden="true"><path d="M12 2.25L2.25 7.875v11.25L12 24.75l9.75-5.625V7.875L12 2.25z"/></svg>
+                Node.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#828282" aria-hidden="true"><path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/></svg>
+                Express.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#47A248" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                MongoDB
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#a855f7" aria-hidden="true"><path d="M12 2l2.4 7.2L21.6 12l-7.2 2.4L12 21.6l-2.4-7.2L2.4 12l7.2-2.4z"/></svg>
+                LLM / AI APIs
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                REST APIs
+              </span>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://github.com/pyakio/docmind-ai" target="_blank" rel="noopener" class="btn ghost-btn btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <button type="button" class="btn primary-btn btn-sm open-case-study-btn" data-project="docmind">
+                Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: MailPilot -->
+        <article class="project-card" data-project-id="mailpilot">
+          <div class="project-thumb">
+            <img src="assets/images/mailpilot.png" alt="MailPilot - SaaS Email Marketing Platform" class="thumb-img" width="1376" height="768" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fallback-mockup mailpilot-bg" style="display:none;" aria-hidden="true">
+              <div class="mock-window">
+                <div class="mock-header"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="mock-title">MailPilot SaaS Dashboard</span></div>
+                <div class="mock-content">
+                  <div class="mock-sidebar"><div class="mock-line w80 blue"></div><div class="mock-line w60"></div><div class="mock-line w70"></div></div>
+                  <div class="mock-main"><div class="mock-box">Email Marketing &amp; Campaigns</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">MailPilot</h3>
+                <span class="project-pitch">Full-Stack SaaS Cloud Email Marketing Platform</span>
+              </div>
+              <span class="status-pill status-dev">Currently in development</span>
+            </div>
+
+            <p class="project-desc">
+              Cloud-based campaign management and automation system for creating, scheduling, and tracking bulk email delivery with real-time analytics.
+            </p>
+
+            <div class="tag-row" aria-label="Technologies used">
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><circle cx="12" cy="12" r="2.055"/><g stroke="#61DAFB" stroke-width="1.2" fill="none"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
+                React.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#339933" aria-hidden="true"><path d="M12 2.25L2.25 7.875v11.25L12 24.75l9.75-5.625V7.875L12 2.25z"/></svg>
+                Node.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#828282" aria-hidden="true"><path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/></svg>
+                Express.js
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#47A248" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                MongoDB
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Cloud Email / SMTP
+              </span>
+              <span class="tag">
+                <svg class="tech-icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                REST APIs
+              </span>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://github.com/pyakio/MailPilot" target="_blank" rel="noopener" class="btn ghost-btn btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <button type="button" class="btn primary-btn btn-sm open-case-study-btn" data-project="mailpilot">
+                Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="view-all-wrap">
+        <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="btn ghost-btn">
+          Explore all repositories on GitHub →
+        </a>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="section-block" aria-labelledby="skills-title">
+      <div class="sec-head">
+        <div class="eyebrow">WHAT I WORK WITH</div>
+        <h2 id="skills-title">Technical Skills</h2>
+        <p>A structured breakdown of core languages, systems, and tools I use to build software.</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Category 1: Frontend -->
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <span class="skill-cat-badge">01</span> FRONTEND
+          </div>
+          <div class="skill-list">
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><circle cx="12" cy="12" r="2.055"/><g stroke="#61DAFB" stroke-width="1.2" fill="none"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
+              React.js
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#F7DF1E" aria-hidden="true"><path d="M3 3h18v18H3V3zm16.525 14.51c-.246-.432-.676-.79-1.398-1.077-.478-.184-1.127-.34-1.637-.47-.442-.113-.7-.226-.81-.353-.133-.153-.178-.328-.178-.52 0-.256.096-.465.312-.628.214-.162.535-.246.963-.246.438 0 .787.098 1.05.295.263.197.45.45.56.76.082.23.118.345.248.345.14 0 .346-.145.346-.405 0-.17-.042-.353-.127-.55-.183-.424-.5-.783-.95-1.077-.45-.295-1.048-.442-1.794-.442-.81 0-1.488.196-2.034.588-.546.39-.818.927-.818 1.61 0 .47.126.877.378 1.22.25.344.62.613 1.11.808.49.195 1.13.36 1.92.51.52.1.88.22 1.08.36.2.14.3.34.3.6 0 .32-.13.57-.39.75-.26.18-.65.27-1.17.27-.58 0-1.05-.12-1.41-.37-.36-.25-.6-.59-.72-1.02-.05-.18-.1-.28-.24-.28-.14 0-.32.14-.32.39 0 .16.05.37.15.63.2.53.56.96 1.08 1.29.52.33 1.22.49 2.1.49.91 0 1.65-.2 2.22-.6.57-.4.86-.97.86-1.71 0-.52-.13-.96-.39-1.33z"/></svg>
+              JavaScript (ES6+)
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#E34F26" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.78-2.928-.78-.188-2.091H6.248l.33 4.141 5.423 1.503 5.419-1.503.715-8.204H8.531z"/></svg>
+              HTML5
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#1572B6" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.78-2.928-.78-.188-2.091H6.248l.33 4.141 5.423 1.503 5.419-1.503.715-8.204H8.531z"/></svg>
+              CSS3
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#06B6D4" aria-hidden="true"><path d="M12 6C9.243 6 7.42 7.38 6.533 10.14c.977-1.38 2.133-1.875 3.467-1.485 1.333.39 2.222 1.77 3.11 3.15 1.446 2.247 3.124 4.855 7.778 4.855 2.757 0 4.58-1.38 5.467-4.14-.978 1.38-2.133 1.875-3.467 1.485-1.333-.39-2.222-1.77-3.11-3.15C18.333 8.608 16.655 6 12 6z"/></svg>
+              Tailwind CSS
+            </div>
           </div>
         </div>
 
-        <!-- Competitive Card -->
-        <div class="stat-card">
-          <div class="card-head">
-            <span class="stat-platform-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.09-4-4L2 15.08l1.5 1.41z"/></svg>
-              COMPETITIVE
+        <!-- Category 2: Backend -->
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <span class="skill-cat-badge">02</span> BACKEND &amp; APIS
+          </div>
+          <div class="skill-list">
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#339933" aria-hidden="true"><path d="M12 2.25L2.25 7.875v11.25L12 24.75l9.75-5.625V7.875L12 2.25z"/></svg>
+              Node.js
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#828282" aria-hidden="true"><path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/></svg>
+              Express.js
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              RESTful APIs
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Cloud Email / SMTP
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Database & Languages -->
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <span class="skill-cat-badge">03</span> DATABASE &amp; LANGUAGES
+          </div>
+          <div class="skill-list">
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#47A248" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              MongoDB
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#5382A1" aria-hidden="true"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.87.187 4.949-.214 0 0 .524.321 1.462.548-2.613 1.4-8.08.76-7.064-1.048zm.094-3.791s-1.157.77.414.939c1.92.206 3.754.195 6.305-.285 0 0 .373.344 1.066.524-3.411 1.282-9.473.818-7.785-1.178z"/></svg>
+              Java
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#00599C" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3 10.5h-2v-2h-2v2H9v2h2v2h2v-2h2v-2zm5 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z"/></svg>
+              C++
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#3776AB" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.875 3.75h3.75v3.75h-3.75V3.75zm5.625 5.625h3.75v3.75h-3.75v-3.75zM10.125 15h3.75v3.75h-3.75V15z"/></svg>
+              Python
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: AI & Tools -->
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <span class="skill-cat-badge">04</span> AI &amp; DEVELOPER TOOLS
+          </div>
+          <div class="skill-list">
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#a855f7" aria-hidden="true"><path d="M12 2l2.4 7.2L21.6 12l-7.2 2.4L12 21.6l-2.4-7.2L2.4 12l7.2-2.4z"/></svg>
+              LLM Integration
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true"><path d="M12 2L9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27 18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2z"/></svg>
+              Prompt Engineering
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#F05032" aria-hidden="true"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.719.721.719 1.884 0 2.604-.719.719-1.883.719-2.602 0-.719-.72-.719-1.883 0-2.604.175-.175.377-.305.594-.388V8.895c-.217-.083-.419-.213-.594-.388-.532-.533-.672-1.318-.419-1.973L7.546 3.788 1.454 9.88c-.604.604-.604 1.582 0 2.188l10.479 10.478c.604.604 1.582.604 2.188 0l10.425-10.425c.606-.603.606-1.58 0-2.19z"/></svg>
+              Git
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#007ACC" aria-hidden="true"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.12a.807.807 0 0 0-1.026.07L.296 7.604a.8.8 0 0 0 .003 1.155l3.82 3.24-3.82 3.24a.8.8 0 0 0-.003 1.155l1.603 1.524a.807.807 0 0 0 1.026.07l4.12-3.12 9.46 8.63c.48.44 1.19.53 1.705.29l4.94-2.377A1.5 1.5 0 0 0 24 20.06V3.94a1.5 1.5 0 0 0-.85-1.353z"/></svg>
+              VS Code
+            </div>
+            <div class="skill-pill">
+              <svg class="tech-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6C37" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.666 8.443l-3.21 2.378a.499.499 0 0 0-.173.551l1.226 3.774a.5.5 0 0 1-.77.559L11.53 13.33a.498.498 0 0 0-.586 0l-3.21 2.377a.5.5 0 0 1-.769-.56l1.226-3.773a.5.5 0 0 0-.174-.551L4.808 8.443a.5.5 0 0 1 .294-.904h3.968a.5.5 0 0 0 .475-.345l1.226-3.774a.5.5 0 0 1 .95 0l1.226 3.774a.5.5 0 0 0 .475.345h3.968a.5.5 0 0 1 .294.904z"/></svg>
+              Postman
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODING ACTIVITY & STATISTICS SECTION (AUDITED & ACCURATE) -->
+    <section id="stats" class="section-block" aria-labelledby="stats-title">
+      <div class="sec-head">
+        <div class="eyebrow">CONTINUOUS PRACTICE</div>
+        <h2 id="stats-title">Coding Activity &amp; Profiles</h2>
+        <p>Verified metrics from active problem solving and code repositories.</p>
+      </div>
+
+      <div class="stats-layout">
+        <!-- Main Activity Heatmap Card: Accurately Labeled as LeetCode Submission Calendar -->
+        <div class="activity-card">
+          <div class="activity-card-top">
+            <div class="activity-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFA116" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
+              <span>CODING ACTIVITY <small class="platform-handle">(@abhaysingh79)</small></span>
+            </div>
+            
+            <div class="activity-meta">
+              <span id="submissionsMeta">TOTAL SUBMISSIONS: <strong id="totalSubmissions" class="white-txt">--</strong></span>
+              <span id="streakMeta">ACTIVE STREAK: <strong id="streakVal" class="green-txt">--</strong></span>
+            </div>
+          </div>
+
+          <div class="calendar-controls">
+            <div class="year-tabs" role="tablist" aria-label="Activity year selection">
+              <button type="button" class="year-btn" data-year="2024" role="tab" aria-selected="false">2024</button>
+              <button type="button" class="year-btn" data-year="2025" role="tab" aria-selected="false">2025</button>
+              <button type="button" class="year-btn active" data-year="2026" role="tab" aria-selected="true">2026</button>
+            </div>
+            <div class="calendar-legend" aria-hidden="true">
+              <span>Less</span>
+              <div class="legend-cell l0"></div>
+              <div class="legend-cell l1"></div>
+              <div class="legend-cell l2"></div>
+              <div class="legend-cell l3"></div>
+              <div class="legend-cell l4"></div>
+              <span>More</span>
+            </div>
+          </div>
+
+          <!-- Heatmap Container with horizontal scroll wrapper for responsive views -->
+          <div class="heat-wrapper" id="heatWrapper">
+            <div class="month-labels" id="monthLabels" aria-hidden="true">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+              <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+            </div>
+            <div class="heat-grid" id="heatGrid" role="img" aria-label="Activity heatmap showing daily problem solving submissions">
+              <!-- Dynamically populated by js/script.js -->
+            </div>
+          </div>
+
+          <div class="stats-fallback-msg" id="statsFallbackMsg" style="display: none;">
+            <span>Live activity feed unavailable.</span>
+            <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="ext-profile-link">
+              View LeetCode Profile →
+            </a>
+          </div>
+        </div>
+
+        <!-- Secondary Stats Row -->
+        <div class="stats-row2">
+          <!-- LeetCode Solved Metrics Card -->
+          <div class="stat-card">
+            <div class="card-head">
+              <span class="stat-platform-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFA116" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
+                LEETCODE SOLVED
+              </span>
+              <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="ext-link" aria-label="Open LeetCode profile in new tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            
+            <div class="big-num" id="lcTotal">125</div>
+            <div class="num-label">Problems Solved</div>
+            
+            <div class="diff-labels">
+              <span class="easy-txt" id="lcEasy">Easy 77</span>
+              <span class="med-txt" id="lcMed">Med 44</span>
+              <span class="hard-txt" id="lcHard">Hard 6</span>
+            </div>
+            
+            <div class="diff-bar" role="progressbar" aria-label="Problem difficulty distribution">
+              <span class="bar-easy" id="lcEasyBar" style="width: 61.6%;" title="Easy"></span>
+              <span class="bar-med" id="lcMedBar" style="width: 35.2%;" title="Medium"></span>
+              <span class="bar-hard" id="lcHardBar" style="width: 4.8%;" title="Hard"></span>
+            </div>
+
+            <div class="lc-sync-status" id="lcSyncStatus">
+              <span class="sync-dot"></span> Synced live with LeetCode API
+            </div>
+          </div>
+
+          <!-- Developer Platforms & Competitive Profiles -->
+          <div class="stat-card">
+            <div class="card-head">
+              <span class="stat-platform-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                DEVELOPER PROFILES
+              </span>
+            </div>
+
+            <div class="comp-rows">
+              <!-- GitHub Row -->
+              <div class="comp-row">
+                <div class="comp-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>GitHub <small class="text-dim">(@pyakio)</small></span>
+                </div>
+                <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="view-profile-btn">
+                  View Profile
+                </a>
+              </div>
+
+              <!-- GeeksforGeeks Row (Correctly labeled!) -->
+              <div class="comp-row">
+                <div class="comp-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2f8d46" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                  <span>GeeksforGeeks</span>
+                </div>
+                <a href="https://www.geeksforgeeks.org/profile/anupamis0o?tab=activity" target="_blank" rel="noopener" class="view-profile-btn">
+                  View Profile
+                </a>
+              </div>
+
+              <!-- HackerRank Row -->
+              <div class="comp-row">
+                <div class="comp-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2EC866" aria-hidden="true"><path d="M12 0L1.75 6v12L12 24l10.25-6V6L12 0zm-1.25 17.5h-2.5V6.5h2.5v11zm5 0h-2.5V6.5h2.5v11z"/></svg>
+                  <span>HackerRank</span>
+                </div>
+                <a href="https://www.hackerrank.com/profile/anupam_sng28" target="_blank" rel="noopener" class="view-profile-btn">
+                  View Profile
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & CERTIFICATIONS SECTION -->
+    <section id="achievements" class="section-block" aria-labelledby="achievements-title">
+      <div class="sec-head">
+        <div class="eyebrow">MILESTONES &amp; CREDENTIALS</div>
+        <h2 id="achievements-title">Achievements</h2>
+        <p>Verified certifications, accreditations, and technical training milestones.</p>
+      </div>
+
+      <div class="ach-list">
+        <!-- Credential 1: AWS Academy Cloud Foundations (Verified Image) -->
+        <div class="ach-card has-cert" data-cert-title="AWS Academy Cloud Foundations" data-cert-org="AWS Academy · Training &amp; Certification" data-cert-img="assets/images/aws_academy_badge.png" data-cert-desc="Official accreditation badge from AWS Academy validating foundational cloud computing knowledge, AWS core architecture, compute, networking, storage, and cloud security principles.">
+          <div class="ach-dot dot-orange" aria-hidden="true"></div>
+          <div class="ach-info">
+            <h4>AWS Academy Cloud Foundations</h4>
+            <div class="org">AWS Academy · Training &amp; Certification</div>
+          </div>
+          <button type="button" class="cert-pill-view" aria-label="View AWS Academy Cloud Foundations Credential">
+            <span class="cert-view-text">View Credential</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+
+        <!-- Credential 2: AWS Cloud Practitioner Essentials (Verified Image + PDF) -->
+        <div class="ach-card has-cert" data-cert-title="AWS Cloud Practitioner Essentials" data-cert-org="AWS Training &amp; Certification · August 30, 2025" data-cert-img="assets/images/aws_cloud_practitioner_cert.png" data-cert-pdf="assets/certificates/aws_cloud_practitioner_essentials.pdf" data-cert-desc="Official AWS Training &amp; Certification Completion Certificate awarded to Abhay Narayan Singh by Michelle Vaz (Director, AWS Training &amp; Certification) for completing the AWS Cloud Practitioner Essentials curriculum.">
+          <div class="ach-dot dot-orange" aria-hidden="true"></div>
+          <div class="ach-info">
+            <h4>AWS Cloud Practitioner Essentials</h4>
+            <div class="org">AWS Training &amp; Certification · August 2025</div>
+          </div>
+          <button type="button" class="cert-pill-view" aria-label="View AWS Cloud Practitioner Essentials Certificate">
+            <span class="cert-view-text">View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+
+        <!-- Item 3: CodeTantra (Semantic Functional Accordion) -->
+        <details class="ach-accordion">
+          <summary class="ach-summary">
+            <div class="ach-dot dot-green" aria-hidden="true"></div>
+            <div class="ach-info">
+              <h4>CodeTantra Course Completion</h4>
+              <div class="org">CodeTantra · Certification</div>
+            </div>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </span>
+          </summary>
+          <div class="ach-details-body">
+            <p>Completed intensive interactive coursework in core data structures and algorithmic problem solving through CodeTantra's automated evaluation environment, strengthening computational logic and debugging skills.</p>
           </div>
-          <div class="comp-rows">
-            <div class="comp-row">
-              <div class="comp-brand">
-                <span class="codechef-icon">&lt;/&gt;</span>
-                CodeChef
-              </div>
-              <a href="https://www.geeksforgeeks.org/profile/anupamis0o?tab=activity" target="_blank" rel="noopener" class="view-profile-btn">View Profile</a>
+        </details>
+
+        <!-- Item 4: Parul University (Semantic Functional Accordion) -->
+        <details class="ach-accordion">
+          <summary class="ach-summary">
+            <div class="ach-dot dot-purple" aria-hidden="true"></div>
+            <div class="ach-info">
+              <h4>Frontend Certification from Parul University</h4>
+              <div class="org">Parul University · Institutional Certification</div>
             </div>
-            <div class="comp-row">
-              <div class="comp-brand">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#2EC866"><path d="M12 0L1.75 6v12L12 24l10.25-6V6L12 0zm-1.25 17.5h-2.5V6.5h2.5v11zm5 0h-2.5V6.5h2.5v11z"/></svg>
-                HackerRank
-              </div>
-              <a href="https://www.hackerrank.com/profile/anupam_sng28" target="_blank" rel="noopener" class="view-profile-btn">View Profile</a>
-            </div>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+          </summary>
+          <div class="ach-details-body">
+            <p>Accredited university certification covering responsive web development foundations, modern DOM manipulation, semantic HTML5 document architecture, and client-side styling methodologies.</p>
           </div>
+        </details>
+
+        <!-- Item 5: NPTEL IIT Kharagpur (Semantic Functional Accordion) -->
+        <details class="ach-accordion">
+          <summary class="ach-summary">
+            <div class="ach-dot dot-blue" aria-hidden="true"></div>
+            <div class="ach-info">
+              <h4>NPTEL Certificate in Computer Networks</h4>
+              <div class="org">NPTEL · IIT Kharagpur</div>
+            </div>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+          </summary>
+          <div class="ach-details-body">
+            <p>Rigorous national curriculum certification conducted by Indian Institute of Technology (IIT) Kharagpur, covering OSI network model layers, IP subnetting, TCP/UDP transport protocol mechanics, routing algorithms, and network packet analysis.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section-block" aria-labelledby="contact-title">
+      <div class="contact-card">
+        <div class="eyebrow center-eyebrow">GET IN TOUCH</div>
+        <h2 id="contact-title">Let's Connect</h2>
+        <p>I'm open to software engineering opportunities, internships, and collaborative projects. Whether you have a question or an idea, feel free to reach out directly.</p>
+        
+        <div class="contact-actions">
+          <a href="mailto:kmrsingh116@gmail.com" class="btn primary-btn btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Say Hello via Email
+          </a>
+          <button type="button" class="btn ghost-btn btn-lg" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span id="copyEmailText">Copy Email</span>
+          </button>
+        </div>
+
+        <div class="email-line">kmrsingh116@gmail.com</div>
+
+        <div class="icon-row" aria-label="Direct profile links">
+          <a href="https://github.com/pyakio" target="_blank" rel="noopener" aria-label="GitHub profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" aria-label="LeetCode profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
+          </a>
+          <!-- Instagram & X placeholders for future update -->
+          <a href="" class="social-icon-placeholder" id="contactInstagramIcon" style="display:none;" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="" class="social-icon-placeholder" id="contactXIcon" style="display:none;" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ACHIEVEMENTS SECTION -->
-  <section id="achievements" class="section-block">
-    <div class="sec-head">
-      <div class="eyebrow">MILESTONES</div>
-      <h2>Achievements</h2>
-      <p>Hackathons, competitions, and recognition that shaped my journey.</p>
-    </div>
-
-    <div class="ach-list">
-      <!-- Item 1 -->
-      <div class="ach-card">
-        <div class="ach-dot dot-green"></div>
-        <div class="ach-info">
-          <h4>CodeTantra Course Completion</h4>
-          <div class="org">CodeTantra · Certification</div>
+    <!-- FOOTER PANEL WITH PROJECT-RELATIVE ASSET PATH -->
+    <footer class="footer-panel">
+      <div class="footer-banner-container">
+        <img class="footer-illustration" src="assets/images/footer_illustration.jpeg" alt="Rooftop illustration artwork" width="1024" height="1024" loading="lazy" decoding="async">
+        <div class="footer-overlay-text">
+          <p>Designed and Developed by <a href="#hero">Abhay Narayan Singh</a></p>
+          <span class="yr">© 2026 Abhay Narayan Singh. All Rights Reserved.</span>
         </div>
-        <div class="chev">⌄</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- LIGHTWEIGHT CASE STUDY MODAL (ACCESSIBLE & KEYBOARD DRIVEN) -->
+  <div id="caseStudyModal" class="app-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="caseStudyTitle">
+    <div class="app-modal-backdrop" id="caseStudyBackdrop"></div>
+    <div class="app-modal-dialog">
+      <button type="button" class="app-modal-close" id="caseStudyClose" aria-label="Close case study modal">✕</button>
+      <div class="app-modal-header">
+        <div class="modal-badge-tag" id="caseStudyTag">PRODUCT CASE STUDY</div>
+        <h3 id="caseStudyTitle" class="app-modal-title">Project Title</h3>
+        <p id="caseStudyPitch" class="app-modal-pitch">Project value proposition</p>
       </div>
 
-      <!-- Item 2 -->
-      <div class="ach-card">
-        <div class="ach-dot dot-purple"></div>
-        <div class="ach-info">
-          <h4>Frontend Certification from Parul University</h4>
-          <div class="org">Parul University · Certification</div>
-        </div>
-        <div class="chev">⌄</div>
+      <div class="app-modal-body" id="caseStudyBody">
+        <!-- Dynamically rendered by js/script.js -->
       </div>
 
-      <!-- Item 3 -->
-      <div class="ach-card">
-        <div class="ach-dot dot-blue"></div>
-        <div class="ach-info">
-          <h4>NPTEL Certificates in Computer Network</h4>
-          <div class="org">NPTEL · IIT Kharagpur</div>
-        </div>
-        <div class="chev">⌄</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section-block">
-    <div class="contact-card">
-      <div class="eyebrow center-eyebrow">GET IN TOUCH</div>
-      <h2>Let's Connect</h2>
-      <p>I'm currently looking for new opportunities. Whether you have a question, a project idea, or just want to say hi — I'll get back to you!</p>
-      <a href="mailto:kmrsingh116@gmail.com" class="btn primary-btn btn-lg">
-        ✉ Say Hello
-      </a>
-      <div class="email-line">kmrsingh116@gmail.com</div>
-      <div class="icon-row">
-        <a href="https://github.com/pyakio" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      <div class="app-modal-footer">
+        <a id="caseStudyRepoBtn" href="https://github.com/pyakio" target="_blank" rel="noopener" class="btn ghost-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View Source Repository
         </a>
-        <a href="https://www.linkedin.com/in/abhay-narayan-singh-4b4b55303/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://x.com" target="_blank" rel="noopener" aria-label="Twitter">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER PANEL MATCHING SCREENSHOT 2 & 3 PROPORTIONS -->
-  <div class="footer-panel">
-    <div class="footer-banner-container">
-      <img class="footer-illustration" src="/Users/abhaysingh/.gemini/antigravity-ide/brain/b2dbf286-4a19-4246-943a-573a04050a58/footer_rooftop_sunset_perfect_1784905365267.png" alt="Rooftop sunset illustration" onerror="this.src='assets/images/footer_illustration.jpeg';">
-      <div class="footer-overlay-text">
-        <p>Designed and Developed by <a href="#hero">Abhay Singh</a></p>
-        <span class="yr">© 2026 All Rights Reserved</span>
+        <button type="button" class="btn primary-btn" id="caseStudyDoneBtn">Close</button>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- CERTIFICATE LIGHTBOX MODAL -->
+  <div id="certModal" class="app-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+    <div class="app-modal-backdrop" id="certModalBackdrop"></div>
+    <div class="app-modal-dialog cert-dialog">
+      <button type="button" class="app-modal-close" id="certModalClose" aria-label="Close certificate modal">✕</button>
+      <div class="app-modal-header">
+        <div class="modal-badge-tag">OFFICIAL CREDENTIAL</div>
+        <h3 id="certModalTitle" class="app-modal-title">Certificate Title</h3>
+        <p id="certModalOrg" class="app-modal-pitch">Issuer &amp; Date</p>
+      </div>
+      <div class="app-modal-body">
+        <div class="cert-img-container">
+          <img id="certModalImg" src="" alt="Certificate Preview" class="cert-modal-img" width="600" height="400" loading="lazy" decoding="async">
+        </div>
+        <p id="certModalDesc" class="cert-modal-desc"></p>
+      </div>
+      <div class="app-modal-footer">
+        <a id="certModalOpenBtn" href="assets/images/aws_academy_badge.png" target="_blank" rel="noopener" class="btn primary-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Open High-Res Image
+        </a>
+        <a id="certModalPdfBtn" href="assets/certificates/aws_cloud_practitioner_essentials.pdf" target="_blank" rel="noopener" class="btn ghost-btn" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </div>
 
-<script src="js/script.js"></script>
+  <!-- SCRIPT -->
+  <script src="js/script.js"></script>
 </body>
 </html>
