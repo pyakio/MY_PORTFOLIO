@@ -121,6 +121,7 @@
           id: String(item.id || ''),
           title: item.title || '',
           titleSlug: item.titleSlug || '',
+          difficulty: item.difficulty || '',
           timestamp: parseInt(item.timestamp, 10),
           statusDisplay: 'Accepted',
           url: `https://leetcode.com/problems/${item.titleSlug}/`
@@ -159,6 +160,7 @@
         id: String(s.id || idx),
         title: s.title || '',
         titleSlug: s.titleSlug || '',
+        difficulty: s.difficulty || '',
         timestamp: parseInt(s.timestamp, 10) || Math.floor(Date.now() / 1000),
         statusDisplay: s.statusDisplay || 'Accepted',
         url: s.titleSlug ? `https://leetcode.com/problems/${s.titleSlug}/` : ''

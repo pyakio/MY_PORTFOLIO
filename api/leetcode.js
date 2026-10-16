@@ -69,7 +69,7 @@ query getUserFullProfile($username: String!) {
     difficulty
     count
   }
-  recentAcSubmissionList(username: $username, limit: 10) {
+  recentAcSubmissionList(username: $username, limit: 20) {
     id
     title
     titleSlug
@@ -172,6 +172,7 @@ function normalizeGraphQLResponse(raw, username) {
       id: String(item.id || ''),
       title: item.title || '',
       titleSlug: item.titleSlug || '',
+      difficulty: item.difficulty || '',
       timestamp: parseInt(item.timestamp, 10),
       statusDisplay: 'Accepted',
       url: `https://leetcode.com/problems/${item.titleSlug}/`

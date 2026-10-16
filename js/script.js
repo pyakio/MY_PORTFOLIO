@@ -329,7 +329,17 @@ document.addEventListener('DOMContentLoaded', () => {
       syncText.textContent = text;
     }
     if (syncTime) {
-      syncTime.textContent = lastSynced ? `Synced ${formatRelativeTime(lastSynced)}` : '';
+      if (lastSynced) {
+        if (status === 'live') {
+          syncTime.textContent = `Synced ${formatRelativeTime(lastSynced)}`;
+        } else if (status === 'stale') {
+          syncTime.textContent = `Updated ${formatRelativeTime(lastSynced)}`;
+        } else {
+          syncTime.textContent = formatRelativeTime(lastSynced);
+        }
+      } else {
+        syncTime.textContent = '';
+      }
     }
   };
 
@@ -473,10 +483,15 @@ document.addEventListener('DOMContentLoaded', () => {
           distinctRecent.forEach(sub => {
             const a = document.createElement('a');
             a.className = 'lc-recent-item';
-            a.href = sub.url || `https://leetcode.com/problems/${sub.titleSlug}/`;
+            a.href = sub.url || (sub.titleSlug ? `https://leetcode.com/problems/${sub.titleSlug}/` : 'https://leetcode.com/u/abhaysingh79/');
             a.target = '_blank';
-            a.rel = 'noopener';
-            a.title = `${sub.title} (Accepted)`;
+            a.rel = 'noopener noreferrer';
+
+            const dateLabel = formatSubmissionDate(sub.timestamp);
+            const diffLabel = sub.difficulty ? ` [${sub.difficulty}]` : '';
+            const fullTitle = `${sub.title}${diffLabel} — Accepted (${dateLabel})`;
+            a.title = fullTitle;
+            a.setAttribute('aria-label', fullTitle);
 
             const leftDiv = document.createElement('div');
             leftDiv.className = 'lc-recent-left';
@@ -501,12 +516,24 @@ document.addEventListener('DOMContentLoaded', () => {
             leftDiv.appendChild(checkIcon);
             leftDiv.appendChild(titleSpan);
 
+            const rightDiv = document.createElement('div');
+            rightDiv.className = 'lc-recent-right';
+
+            if (sub.difficulty) {
+              const diffBadge = document.createElement('span');
+              const dLower = sub.difficulty.toLowerCase();
+              diffBadge.className = `lc-recent-diff diff-${dLower}`;
+              diffBadge.textContent = sub.difficulty;
+              rightDiv.appendChild(diffBadge);
+            }
+
             const metaSpan = document.createElement('span');
             metaSpan.className = 'lc-recent-meta';
-            metaSpan.textContent = formatSubmissionDate(sub.timestamp);
+            metaSpan.textContent = dateLabel;
+            rightDiv.appendChild(metaSpan);
 
             a.appendChild(leftDiv);
-            a.appendChild(metaSpan);
+            a.appendChild(rightDiv);
             lcRecentList.appendChild(a);
           });
           lcRecentSection.style.display = 'block';
@@ -522,17 +549,26 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeatmap(profile.submissionCalendar || {}, profile.streak);
   };
 
+  // Helper to query all refresh controls across the Stats section
+  const getRefreshButtons = () => {
+    return document.querySelectorAll('#lcRefreshBtn, #lcCardRefreshBtn');
+  };
+
+  const setRefreshingState = (refreshing) => {
+    getRefreshButtons().forEach(btn => {
+      btn.disabled = refreshing;
+      btn.classList.toggle('spinning', refreshing);
+      btn.setAttribute('aria-busy', String(refreshing));
+    });
+  };
+
   // Main synchronization controller
   const syncLeetCodeData = async ({ forceRefresh = false } = {}) => {
     if (isSyncing) return;
     isSyncing = true;
+    setRefreshingState(true);
 
-    if (lcRefreshBtn) {
-      lcRefreshBtn.disabled = true;
-      lcRefreshBtn.classList.add('spinning');
-    }
-
-    updateSyncStatusUI('syncing', 'Syncing with LeetCode...', currentLeetCodeProfile?.lastSynced);
+    updateSyncStatusUI('syncing', 'Syncing...', currentLeetCodeProfile?.lastSynced);
 
     const errorBanner = document.getElementById('lcErrorBanner');
     const errorMsg = document.getElementById('lcErrorMsg');
@@ -553,20 +589,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (errorBanner) errorBanner.style.display = 'none';
       if (statsFallbackMsg) statsFallbackMsg.style.display = 'none';
 
+      // Truthful status mapping: never mark cached or stale data as live
       if (result.isStale) {
-        updateSyncStatusUI('stale', 'Cached Profile Metrics (Offline)', currentLeetCodeProfile.lastSynced);
+        updateSyncStatusUI('stale', 'Cached', currentLeetCodeProfile.lastSynced);
       } else {
-        updateSyncStatusUI('live', 'Live Synced with LeetCode API', currentLeetCodeProfile.lastSynced);
+        updateSyncStatusUI('live', 'Live', currentLeetCodeProfile.lastSynced);
       }
     } catch (err) {
       console.warn('LeetCode live sync failed:', err.message);
 
       if (currentLeetCodeProfile) {
-        // We already have cached data on screen: keep displaying it
-        updateSyncStatusUI('stale', 'Cached Profile Metrics', currentLeetCodeProfile.lastSynced);
+        // We already have cached data on screen: keep displaying it with honest cached label
+        updateSyncStatusUI('stale', 'Cached (Offline)', currentLeetCodeProfile.lastSynced);
       } else {
         // No cached data available at all: show honest error state
-        updateSyncStatusUI('error', 'Sync Unavailable', null);
+        updateSyncStatusUI('error', 'Offline', null);
         if (errorBanner) {
           if (errorMsg) errorMsg.textContent = 'Could not sync live LeetCode stats. Check network connection.';
           errorBanner.style.display = 'flex';
@@ -575,19 +612,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } finally {
       isSyncing = false;
-      if (lcRefreshBtn) {
-        lcRefreshBtn.disabled = false;
-        lcRefreshBtn.classList.remove('spinning');
-      }
+      setRefreshingState(false);
     }
   };
 
   // Wire manual refresh and retry controls
-  if (lcRefreshBtn) {
-    lcRefreshBtn.addEventListener('click', () => {
+  getRefreshButtons().forEach(btn => {
+    btn.addEventListener('click', () => {
       syncLeetCodeData({ forceRefresh: true });
     });
-  }
+  });
 
   if (lcRetryBtn) {
     lcRetryBtn.addEventListener('click', () => {
@@ -601,7 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached && cached.data) {
       currentLeetCodeProfile = cached.data;
       updateLeetCodeUI(currentLeetCodeProfile);
-      updateSyncStatusUI('live', 'Cached Profile Metrics', cached.timestamp);
+      // Explicit requirement: do not label cached or stale data as live
+      updateSyncStatusUI('stale', 'Cached', cached.timestamp);
     }
   }
 
