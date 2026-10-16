@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test tests/*.test.js",
     "lint": "node --check js/script.js && node --check js/leetcode-service.js && node --check api/leetcode.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "keywords": [
     "portfolio",
