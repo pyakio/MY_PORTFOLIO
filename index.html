@@ -502,6 +502,10 @@
             <div class="activity-meta">
               <span id="submissionsMeta">TOTAL SUBMISSIONS: <strong id="totalSubmissions" class="white-txt">--</strong></span>
               <span id="streakMeta">ACTIVE STREAK: <strong id="streakVal" class="green-txt">--</strong></span>
+              <button type="button" class="refresh-btn" id="lcRefreshBtn" aria-label="Refresh live LeetCode statistics" title="Refresh live statistics">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span>Refresh</span>
+              </button>
             </div>
           </div>
 
@@ -543,35 +547,95 @@
 
         <!-- Secondary Stats Row -->
         <div class="stats-row2">
-          <!-- LeetCode Solved Metrics Card -->
-          <div class="stat-card">
+          <!-- LeetCode Solved & Profile Metrics Card -->
+          <div class="stat-card lc-overview-card" id="lcCard">
             <div class="card-head">
               <span class="stat-platform-title">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFA116" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
                 LEETCODE SOLVED
               </span>
-              <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="ext-link" aria-label="Open LeetCode profile in new tab">
+              <a href="https://leetcode.com/u/abhaysingh79/" id="lcProfileLink" target="_blank" rel="noopener" class="ext-link" aria-label="Open LeetCode profile in new tab">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
-            
-            <div class="big-num" id="lcTotal">125</div>
-            <div class="num-label">Problems Solved</div>
-            
-            <div class="diff-labels">
-              <span class="easy-txt" id="lcEasy">Easy 77</span>
-              <span class="med-txt" id="lcMed">Med 44</span>
-              <span class="hard-txt" id="lcHard">Hard 6</span>
+
+            <!-- Profile Summary Bar -->
+            <div class="lc-profile-bar" id="lcProfileBar">
+              <img id="lcAvatar" src="assets/images/pfp.png" alt="LeetCode profile avatar" class="lc-avatar" width="36" height="36" loading="lazy">
+              <div class="lc-user-info">
+                <span class="lc-user-name" id="lcRealName">Abhay Singh</span>
+                <span class="lc-user-handle" id="lcUsername">@abhaysingh79</span>
+              </div>
+              <div class="lc-pills">
+                <span class="lc-pill lc-pill-rank" id="lcGlobalRank" title="Global Ranking">Rank --</span>
+                <span class="lc-pill" id="lcContestRating" title="Contest Rating">Unrated</span>
+              </div>
             </div>
             
+            <div class="big-num" id="lcTotal">--</div>
+            <div class="num-label" id="lcTotalLabel">Problems Solved</div>
+
+            <!-- Difficulty Breakdown with verified totals & individual tracks -->
+            <div class="diff-breakdown-list">
+              <div class="diff-item">
+                <div class="diff-item-head">
+                  <span class="easy-txt">Easy</span>
+                  <span class="count-txt" id="lcEasy">-- / --</span>
+                </div>
+                <div class="diff-item-track">
+                  <div class="diff-item-fill bar-easy" id="lcEasyProgress" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="diff-item">
+                <div class="diff-item-head">
+                  <span class="med-txt">Medium</span>
+                  <span class="count-txt" id="lcMed">-- / --</span>
+                </div>
+                <div class="diff-item-track">
+                  <div class="diff-item-fill bar-med" id="lcMedProgress" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="diff-item">
+                <div class="diff-item-head">
+                  <span class="hard-txt">Hard</span>
+                  <span class="count-txt" id="lcHard">-- / --</span>
+                </div>
+                <div class="diff-item-track">
+                  <div class="diff-item-fill bar-hard" id="lcHardProgress" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Proportional difficulty distribution bar -->
             <div class="diff-bar" role="progressbar" aria-label="Problem difficulty distribution">
-              <span class="bar-easy" id="lcEasyBar" style="width: 61.6%;" title="Easy"></span>
-              <span class="bar-med" id="lcMedBar" style="width: 35.2%;" title="Medium"></span>
-              <span class="bar-hard" id="lcHardBar" style="width: 4.8%;" title="Hard"></span>
+              <span class="bar-easy" id="lcEasyBar" style="width: 0%;" title="Easy"></span>
+              <span class="bar-med" id="lcMedBar" style="width: 0%;" title="Medium"></span>
+              <span class="bar-hard" id="lcHardBar" style="width: 0%;" title="Hard"></span>
             </div>
 
+            <!-- Badges Section -->
+            <div class="lc-badges-section" id="lcBadgesSection" style="display: none;">
+              <div class="lc-section-title">Earned Badges</div>
+              <div class="lc-badges-grid" id="lcBadgesGrid"></div>
+            </div>
+
+            <!-- Recent Accepted Questions -->
+            <div class="lc-recent-section" id="lcRecentSection" style="display: none;">
+              <div class="lc-section-title">Recent Accepted Submissions</div>
+              <div class="lc-recent-list" id="lcRecentList"></div>
+            </div>
+
+            <!-- Live Status & Timestamp -->
             <div class="lc-sync-status" id="lcSyncStatus">
-              <span class="sync-dot"></span> Synced live with LeetCode API
+              <span class="sync-dot" id="lcSyncDot"></span>
+              <span id="lcSyncText">Connecting to LeetCode...</span>
+              <span class="lc-sync-time" id="lcLastSynced"></span>
+            </div>
+
+            <!-- Error banner (hidden by default) -->
+            <div class="lc-error-banner" id="lcErrorBanner" style="display: none;">
+              <span id="lcErrorMsg">Live synchronization failed.</span>
+              <button type="button" class="lc-retry-btn" id="lcRetryBtn">Retry</button>
             </div>
           </div>
 
@@ -820,6 +884,7 @@
   </div>
 
   <!-- SCRIPT -->
+  <script src="js/leetcode-service.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -168,38 +168,50 @@ document.addEventListener('DOMContentLoaded', () => {
      4. CODING ACTIVITY HEATMAP (LEETCODE SUBMISSION CALENDAR)
      Accurately labeled, dynamically calculates submissions and streaks
      ========================================================================== */
+  const LEETCODE_USERNAME = window.PORTFOLIO_CONFIG?.LEETCODE_USERNAME || 'abhaysingh79';
+
   const heatGrid = document.getElementById('heatGrid');
   const totalSubmissionsEl = document.getElementById('totalSubmissions');
   const streakValEl = document.getElementById('streakVal');
   const yearBtns = document.querySelectorAll('.year-btn');
   const statsFallbackMsg = document.getElementById('statsFallbackMsg');
-
-  // Real verified submission calendar data for 'abhaysingh79'
-  let rawSubmissionCalendar = {
-    "1757894400": 2, "1765065600": 2, "1765152000": 1, "1765238400": 1, "1765324800": 2, "1765411200": 1,
-    "1765497600": 1, "1765584000": 1, "1765670400": 1, "1765756800": 2, "1765843200": 8, "1765929600": 1,
-    "1766016000": 3, "1766102400": 2, "1766188800": 1, "1766275200": 1, "1766361600": 1, "1766448000": 1,
-    "1766534400": 1, "1766620800": 1, "1766707200": 1, "1766793600": 1, "1766880000": 1, "1766966400": 1,
-    "1767052800": 2, "1767139200": 2, "1767312000": 1, "1767398400": 1, "1767484800": 1, "1767571200": 1,
-    "1767657600": 1, "1768608000": 1, "1768694400": 1, "1768780800": 1, "1768867200": 1, "1768953600": 1,
-    "1769040000": 1, "1769126400": 1, "1769212800": 1, "1769299200": 1, "1769385600": 1, "1769472000": 2,
-    "1769558400": 1, "1769731200": 1, "1769817600": 1, "1769904000": 1, "1769990400": 1, "1770076800": 1,
-    "1770163200": 2, "1770249600": 1, "1770336000": 1, "1770422400": 1, "1770508800": 1, "1770595200": 1,
-    "1770681600": 1, "1770768000": 1, "1770854400": 1, "1770940800": 1, "1771027200": 2, "1771113600": 1,
-    "1771200000": 4, "1771286400": 1, "1771459200": 2, "1771545600": 1, "1771632000": 1, "1771718400": 1,
-    "1771804800": 1, "1771891200": 1, "1772150400": 1, "1772236800": 1, "1772323200": 1, "1772409600": 1,
-    "1772496000": 1, "1772582400": 1, "1772668800": 2, "1772755200": 1, "1772841600": 1, "1772928000": 1,
-    "1773014400": 1, "1773187200": 4, "1773273600": 1, "1773360000": 1, "1773446400": 1, "1773532800": 1,
-    "1773619200": 2, "1773705600": 1, "1773792000": 1, "1773964800": 1, "1774224000": 5, "1779148800": 2,
-    "1779321600": 3, "1779408000": 5, "1779840000": 2, "1779926400": 2, "1780012800": 4, "1780099200": 2,
-    "1780272000": 3, "1780358400": 3, "1780444800": 2, "1780531200": 1, "1780617600": 1, "1780704000": 4,
-    "1780876800": 5, "1784678400": 1
-  };
+  const lcRefreshBtn = document.getElementById('lcRefreshBtn');
+  const lcRetryBtn = document.getElementById('lcRetryBtn');
 
   let activeYear = '2026';
+  let currentLeetCodeProfile = null;
+  let isSyncing = false;
+  let autoSyncIntervalId = null;
 
+  // Format relative time helper (e.g., 'Just now', '5m ago', '2h ago')
+  const formatRelativeTime = (timestampMs) => {
+    if (!timestampMs) return '';
+    const diffSec = Math.floor((Date.now() - timestampMs) / 1000);
+    if (diffSec < 45) return 'Just now';
+    const diffMin = Math.floor(diffSec / 60);
+    if (diffMin < 60) return `${diffMin}m ago`;
+    const diffHr = Math.floor(diffMin / 60);
+    if (diffHr < 24) return `${diffHr}h ago`;
+    const diffDays = Math.floor(diffHr / 24);
+    return `${diffDays}d ago`;
+  };
+
+  // Format submission date helper
+  const formatSubmissionDate = (ts) => {
+    if (!ts) return '';
+    const date = new Date(parseInt(ts, 10) * 1000);
+    const now = new Date();
+    const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return 'Yesterday';
+    if (diffDays < 7) return `${diffDays}d ago`;
+    return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  };
+
+  // Convert raw submissionCalendar timestamps to daily Map (YYYY-MM-DD -> count)
   const getDailyMap = (calendarObj) => {
     const map = new Map();
+    if (!calendarObj || typeof calendarObj !== 'object') return map;
     for (const [ts, count] of Object.entries(calendarObj)) {
       const date = new Date(parseInt(ts, 10) * 1000);
       const yyyy = date.getFullYear();
@@ -211,39 +223,43 @@ document.addEventListener('DOMContentLoaded', () => {
     return map;
   };
 
-  const renderHeatmap = () => {
+  // Render weekly-aligned 53-col x 7-row LeetCode heatmap
+  const renderHeatmap = (calendarObj = {}, streakOverride = null) => {
     if (!heatGrid) return;
     heatGrid.innerHTML = '';
 
-    const dailyMap = getDailyMap(rawSubmissionCalendar);
+    const dailyMap = getDailyMap(calendarObj);
     const yearInt = parseInt(activeYear, 10);
     const now = new Date();
 
+    const jan1 = new Date(yearInt, 0, 1);
+    const jan1Day = jan1.getDay(); // 0 = Sunday, 6 = Saturday
+
     let totalInYear = 0;
-    let currentStreak = 0;
-    let maxStreak = 0;
+    let currentStreakInYear = 0;
+    let maxStreakInYear = 0;
 
     const levels = ['l0', 'l1', 'l2', 'l3', 'l4'];
 
-    // 52 columns x 7 rows = 364 day cells
-    for (let row = 0; row < 7; row++) {
-      for (let col = 0; col < 52; col++) {
+    // Standard 53 weeks x 7 weekdays (Sunday to Saturday)
+    for (let col = 0; col < 53; col++) {
+      for (let row = 0; row < 7; row++) {
         const cell = document.createElement('div');
-        const dayOfYear = col * 7 + row;
-        const date = new Date(yearInt, 0, dayOfYear + 1);
+        const dayOffset = (col * 7 + row) - jan1Day;
+        const cellDate = new Date(yearInt, 0, 1 + dayOffset);
 
-        if (date.getFullYear() === yearInt) {
-          const yyyy = date.getFullYear();
-          const mm = String(date.getMonth() + 1).padStart(2, '0');
-          const dd = String(date.getDate()).padStart(2, '0');
+        if (cellDate.getFullYear() === yearInt) {
+          const yyyy = cellDate.getFullYear();
+          const mm = String(cellDate.getMonth() + 1).padStart(2, '0');
+          const dd = String(cellDate.getDate()).padStart(2, '0');
           const key = `${yyyy}-${mm}-${dd}`;
           const count = dailyMap.get(key) || 0;
 
-          if (date <= now) {
+          if (cellDate <= now) {
             if (count > 0) {
               totalInYear += count;
-              currentStreak += 1;
-              if (currentStreak > maxStreak) maxStreak = currentStreak;
+              currentStreakInYear += 1;
+              if (currentStreakInYear > maxStreakInYear) maxStreakInYear = currentStreakInYear;
 
               let levelIdx = 1;
               if (count >= 5) levelIdx = 4;
@@ -251,17 +267,19 @@ document.addEventListener('DOMContentLoaded', () => {
               else if (count >= 2) levelIdx = 2;
 
               cell.className = `heat-cell ${levels[levelIdx]}`;
-              cell.title = `${date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: ${count} submission${count > 1 ? 's' : ''}`;
+              cell.title = `${cellDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: ${count} submission${count > 1 ? 's' : ''}`;
             } else {
-              currentStreak = 0;
+              currentStreakInYear = 0;
               cell.className = 'heat-cell l0';
-              cell.title = `${date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: No submissions`;
+              cell.title = `${cellDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: No submissions`;
             }
           } else {
-            // Future dates within current year
+            // Future date in current year
             cell.className = 'heat-cell l-future';
+            cell.title = `${cellDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: Future`;
           }
         } else {
+          // Empty padding cell outside the target year
           cell.className = 'heat-cell l-empty';
         }
 
@@ -273,11 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
       totalSubmissionsEl.textContent = totalInYear.toLocaleString();
     }
     if (streakValEl) {
-      streakValEl.textContent = `${maxStreak} day${maxStreak === 1 ? '' : 's'}`;
+      const displayStreak = (streakOverride !== null && streakOverride !== undefined && streakOverride > 0)
+        ? streakOverride
+        : maxStreakInYear;
+      streakValEl.textContent = `${displayStreak} day${displayStreak === 1 ? '' : 's'}`;
     }
   };
-
-  renderHeatmap();
 
   yearBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -288,87 +307,276 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       activeYear = btn.getAttribute('data-year') || btn.textContent.trim();
-      renderHeatmap();
+      renderHeatmap(
+        currentLeetCodeProfile?.submissionCalendar || {},
+        currentLeetCodeProfile?.streak
+      );
     });
   });
 
   /* ==========================================================================
-     5. LIVE LEETCODE STATS FETCH (HONEST SYNC & GRACEFUL FALLBACK)
-     Handles loading, timeout, error, missing fields gracefully
+     5. LIVE LEETCODE STATS FETCH & UI CONTROLLER
      ========================================================================== */
-  const updateLeetCodeUI = (total, easy, med, hard) => {
+  const updateSyncStatusUI = (status, text, lastSynced) => {
+    const syncDot = document.getElementById('lcSyncDot');
+    const syncText = document.getElementById('lcSyncText');
+    const syncTime = document.getElementById('lcLastSynced');
+
+    if (syncDot) {
+      syncDot.className = `sync-dot ${status}`;
+    }
+    if (syncText) {
+      syncText.textContent = text;
+    }
+    if (syncTime) {
+      syncTime.textContent = lastSynced ? `Synced ${formatRelativeTime(lastSynced)}` : '';
+    }
+  };
+
+  const updateLeetCodeUI = (profile) => {
+    if (!profile) return;
+
+    // Elements
     const lcTotalEl = document.getElementById('lcTotal');
+    const lcTotalLabelEl = document.getElementById('lcTotalLabel');
     const lcEasyEl = document.getElementById('lcEasy');
     const lcMedEl = document.getElementById('lcMed');
     const lcHardEl = document.getElementById('lcHard');
+
+    const lcEasyProgress = document.getElementById('lcEasyProgress');
+    const lcMedProgress = document.getElementById('lcMedProgress');
+    const lcHardProgress = document.getElementById('lcHardProgress');
 
     const easyBar = document.getElementById('lcEasyBar');
     const medBar = document.getElementById('lcMedBar');
     const hardBar = document.getElementById('lcHardBar');
 
-    if (lcTotalEl) lcTotalEl.textContent = total;
-    if (lcEasyEl) lcEasyEl.textContent = `Easy ${easy}`;
-    if (lcMedEl) lcMedEl.textContent = `Med ${med}`;
-    if (lcHardEl) lcHardEl.textContent = `Hard ${hard}`;
+    const lcAvatar = document.getElementById('lcAvatar');
+    const lcRealName = document.getElementById('lcRealName');
+    const lcUsername = document.getElementById('lcUsername');
+    const lcGlobalRank = document.getElementById('lcGlobalRank');
+    const lcContestRating = document.getElementById('lcContestRating');
+    const lcProfileLink = document.getElementById('lcProfileLink');
 
+    const lcBadgesSection = document.getElementById('lcBadgesSection');
+    const lcBadgesGrid = document.getElementById('lcBadgesGrid');
+    const lcRecentSection = document.getElementById('lcRecentSection');
+    const lcRecentList = document.getElementById('lcRecentList');
+
+    const total = profile.totalSolved || 0;
+    const totalQ = profile.totalQuestions || 4082;
+    const easy = profile.easySolved || 0;
+    const totalEasy = profile.totalEasy || 971;
+    const med = profile.mediumSolved || 0;
+    const totalMed = profile.totalMedium || 2128;
+    const hard = profile.hardSolved || 0;
+    const totalHard = profile.totalHard || 983;
+
+    // 1. Solved counts & overall progress
+    if (lcTotalEl) lcTotalEl.textContent = total.toLocaleString();
+    if (lcTotalLabelEl) {
+      const overallPct = totalQ > 0 ? ((total / totalQ) * 100).toFixed(1) : '0.0';
+      lcTotalLabelEl.textContent = `Problems Solved out of ${totalQ.toLocaleString()} (${overallPct}%)`;
+    }
+
+    // 2. Difficulty Breakdown Counts & Individual Progress Bars
+    if (lcEasyEl) lcEasyEl.textContent = `${easy.toLocaleString()} / ${totalEasy.toLocaleString()}`;
+    if (lcMedEl) lcMedEl.textContent = `${med.toLocaleString()} / ${totalMed.toLocaleString()}`;
+    if (lcHardEl) lcHardEl.textContent = `${hard.toLocaleString()} / ${totalHard.toLocaleString()}`;
+
+    if (lcEasyProgress) lcEasyProgress.style.width = `${((easy / totalEasy) * 100).toFixed(1)}%`;
+    if (lcMedProgress) lcMedProgress.style.width = `${((med / totalMed) * 100).toFixed(1)}%`;
+    if (lcHardProgress) lcHardProgress.style.width = `${((hard / totalHard) * 100).toFixed(1)}%`;
+
+    // 3. Composite Difficulty Distribution Bar
     if (total > 0) {
       if (easyBar) easyBar.style.width = `${((easy / total) * 100).toFixed(1)}%`;
       if (medBar) medBar.style.width = `${((med / total) * 100).toFixed(1)}%`;
       if (hardBar) hardBar.style.width = `${((hard / total) * 100).toFixed(1)}%`;
     }
-  };
 
-  const fetchLiveLeetCodeStats = async () => {
-    const username = 'abhaysingh79';
-    const endpoints = [
-      `https://leetcode-api-faisalshohag.vercel.app/${username}`,
-      `https://alfa-leetcode-api.onrender.com/${username}/solved`
-    ];
+    // 4. Profile Information Snippet
+    if (lcRealName && profile.realName) lcRealName.textContent = profile.realName;
+    if (lcUsername && profile.username) lcUsername.textContent = `@${profile.username}`;
+    if (lcAvatar && profile.userAvatar) lcAvatar.src = profile.userAvatar;
+    if (lcProfileLink && profile.profileUrl) lcProfileLink.href = profile.profileUrl;
 
-    let syncSuccess = false;
-
-    for (const url of endpoints) {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 6000);
-
-        const res = await fetch(url, { signal: controller.signal });
-        clearTimeout(timeoutId);
-
-        if (!res.ok) continue;
-        const data = await res.json();
-
-        const total = data.totalSolved ?? data.solvedProblem;
-        const easy = data.easySolved;
-        const med = data.mediumSolved;
-        const hard = data.hardSolved;
-
-        if (data.submissionCalendar && typeof data.submissionCalendar === 'object') {
-          rawSubmissionCalendar = { ...rawSubmissionCalendar, ...data.submissionCalendar };
-          renderHeatmap();
-        }
-
-        if (typeof total === 'number' && typeof easy === 'number') {
-          updateLeetCodeUI(total, easy, med, hard);
-          syncSuccess = true;
-          break;
-        }
-      } catch (err) {
-        // Fall through to next endpoint or fallback
-      }
+    if (lcGlobalRank) {
+      lcGlobalRank.textContent = profile.ranking ? `Rank #${profile.ranking.toLocaleString()}` : 'Unranked';
     }
 
-    const syncStatusEl = document.getElementById('lcSyncStatus');
-    if (syncStatusEl) {
-      if (syncSuccess) {
-        syncStatusEl.innerHTML = '<span class="sync-dot live"></span> Live LeetCode Sync Active';
+    if (lcContestRating) {
+      if (profile.contest && profile.contest.rating) {
+        lcContestRating.textContent = `Rating: ${profile.contest.rating}`;
       } else {
-        syncStatusEl.innerHTML = '<span class="sync-dot"></span> Cached Profile Metrics';
+        lcContestRating.textContent = 'Contest: Unrated';
+      }
+    }
+
+    // 5. Badges
+    if (lcBadgesSection && lcBadgesGrid) {
+      if (Array.isArray(profile.badges) && profile.badges.length > 0) {
+        lcBadgesGrid.innerHTML = '';
+        profile.badges.forEach(b => {
+          const badgeEl = document.createElement('div');
+          badgeEl.className = 'lc-badge-item';
+          badgeEl.title = b.displayName;
+          if (b.icon) {
+            const img = document.createElement('img');
+            img.src = b.icon;
+            img.alt = b.displayName;
+            img.width = 20;
+            img.height = 20;
+            img.loading = 'lazy';
+            badgeEl.appendChild(img);
+          }
+          const span = document.createElement('span');
+          span.textContent = b.displayName;
+          badgeEl.appendChild(span);
+          lcBadgesGrid.appendChild(badgeEl);
+        });
+        lcBadgesSection.style.display = 'block';
+      } else {
+        lcBadgesSection.style.display = 'none';
+      }
+    }
+
+    // 6. Recent Accepted Submissions
+    if (lcRecentSection && lcRecentList) {
+      if (Array.isArray(profile.recentSubmissions) && profile.recentSubmissions.length > 0) {
+        lcRecentList.innerHTML = '';
+        profile.recentSubmissions.slice(0, 5).forEach(sub => {
+          const a = document.createElement('a');
+          a.className = 'lc-recent-item';
+          a.href = sub.url || `https://leetcode.com/problems/${sub.titleSlug}/`;
+          a.target = '_blank';
+          a.rel = 'noopener';
+
+          const titleSpan = document.createElement('span');
+          titleSpan.className = 'lc-recent-title';
+          titleSpan.textContent = sub.title;
+
+          const metaSpan = document.createElement('span');
+          metaSpan.className = 'lc-recent-meta';
+          metaSpan.textContent = formatSubmissionDate(sub.timestamp);
+
+          a.appendChild(titleSpan);
+          a.appendChild(metaSpan);
+          lcRecentList.appendChild(a);
+        });
+        lcRecentSection.style.display = 'block';
+      } else {
+        lcRecentSection.style.display = 'none';
+      }
+    }
+
+    // 7. Render Heatmap with verified calendar
+    renderHeatmap(profile.submissionCalendar || {}, profile.streak);
+  };
+
+  // Main synchronization controller
+  const syncLeetCodeData = async ({ forceRefresh = false } = {}) => {
+    if (isSyncing) return;
+    isSyncing = true;
+
+    if (lcRefreshBtn) {
+      lcRefreshBtn.disabled = true;
+      lcRefreshBtn.classList.add('spinning');
+    }
+
+    updateSyncStatusUI('syncing', 'Syncing with LeetCode...', currentLeetCodeProfile?.lastSynced);
+
+    const errorBanner = document.getElementById('lcErrorBanner');
+    const errorMsg = document.getElementById('lcErrorMsg');
+
+    try {
+      if (typeof window.LeetCodeService === 'undefined') {
+        throw new Error('LeetCodeService module is not loaded');
+      }
+
+      const result = await window.LeetCodeService.getLeetCodeProfile({
+        username: LEETCODE_USERNAME,
+        forceRefresh
+      });
+
+      currentLeetCodeProfile = result.data;
+      updateLeetCodeUI(currentLeetCodeProfile);
+
+      if (errorBanner) errorBanner.style.display = 'none';
+      if (statsFallbackMsg) statsFallbackMsg.style.display = 'none';
+
+      if (result.isStale) {
+        updateSyncStatusUI('stale', 'Cached Profile Metrics (Offline)', currentLeetCodeProfile.lastSynced);
+      } else {
+        updateSyncStatusUI('live', 'Live Synced with LeetCode API', currentLeetCodeProfile.lastSynced);
+      }
+    } catch (err) {
+      console.warn('LeetCode live sync failed:', err.message);
+
+      if (currentLeetCodeProfile) {
+        // We already have cached data on screen: keep displaying it
+        updateSyncStatusUI('stale', 'Cached Profile Metrics', currentLeetCodeProfile.lastSynced);
+      } else {
+        // No cached data available at all: show honest error state
+        updateSyncStatusUI('error', 'Sync Unavailable', null);
+        if (errorBanner) {
+          if (errorMsg) errorMsg.textContent = 'Could not sync live LeetCode stats. Check network connection.';
+          errorBanner.style.display = 'flex';
+        }
+        if (statsFallbackMsg) statsFallbackMsg.style.display = 'flex';
+      }
+    } finally {
+      isSyncing = false;
+      if (lcRefreshBtn) {
+        lcRefreshBtn.disabled = false;
+        lcRefreshBtn.classList.remove('spinning');
       }
     }
   };
 
-  fetchLiveLeetCodeStats();
+  // Wire manual refresh and retry controls
+  if (lcRefreshBtn) {
+    lcRefreshBtn.addEventListener('click', () => {
+      syncLeetCodeData({ forceRefresh: true });
+    });
+  }
+
+  if (lcRetryBtn) {
+    lcRetryBtn.addEventListener('click', () => {
+      syncLeetCodeData({ forceRefresh: true });
+    });
+  }
+
+  // Initial load: render cache immediately for instant UI paint, then background sync
+  if (typeof window.LeetCodeService !== 'undefined') {
+    const cached = window.LeetCodeService.getCachedProfile(LEETCODE_USERNAME);
+    if (cached && cached.data) {
+      currentLeetCodeProfile = cached.data;
+      updateLeetCodeUI(currentLeetCodeProfile);
+      updateSyncStatusUI('live', 'Cached Profile Metrics', cached.timestamp);
+    }
+  }
+
+  // Trigger sync
+  syncLeetCodeData({ forceRefresh: false });
+
+  // Automatic periodic sync every 10 minutes when tab is visible
+  if (autoSyncIntervalId) clearInterval(autoSyncIntervalId);
+  autoSyncIntervalId = setInterval(() => {
+    if (!document.hidden) {
+      syncLeetCodeData({ forceRefresh: false });
+    }
+  }, 10 * 60 * 1000);
+
+  // Tab visibility change: sync if data is stale when user re-focuses tab
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && currentLeetCodeProfile) {
+      const age = Date.now() - (currentLeetCodeProfile.lastSynced || 0);
+      if (age > 10 * 60 * 1000) {
+        syncLeetCodeData({ forceRefresh: false });
+      }
+    }
+  });
 
   /* ==========================================================================
      6. PRODUCT CASE STUDY MODAL SYSTEM

@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.1.0",
+  "description": "Portfolio of Abhay Narayan Singh - Full Stack & Cloud Developer",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "lint": "node --check js/script.js && node --check js/leetcode-service.js && node --check api/leetcode.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "leetcode",
+    "developer",
+    "fullstack"
+  ],
+  "author": "Abhay Narayan Singh",
+  "license": "MIT"
+}
