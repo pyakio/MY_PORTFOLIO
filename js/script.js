@@ -347,6 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const lcMedProgress = document.getElementById('lcMedProgress');
     const lcHardProgress = document.getElementById('lcHardProgress');
 
+    const lcEasyPct = document.getElementById('lcEasyPct');
+    const lcMedPct = document.getElementById('lcMedPct');
+    const lcHardPct = document.getElementById('lcHardPct');
+
     const easyBar = document.getElementById('lcEasyBar');
     const medBar = document.getElementById('lcMedBar');
     const hardBar = document.getElementById('lcHardBar');
@@ -384,9 +388,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lcMedEl) lcMedEl.textContent = `${med.toLocaleString()} / ${totalMed.toLocaleString()}`;
     if (lcHardEl) lcHardEl.textContent = `${hard.toLocaleString()} / ${totalHard.toLocaleString()}`;
 
-    if (lcEasyProgress) lcEasyProgress.style.width = `${((easy / totalEasy) * 100).toFixed(1)}%`;
-    if (lcMedProgress) lcMedProgress.style.width = `${((med / totalMed) * 100).toFixed(1)}%`;
-    if (lcHardProgress) lcHardProgress.style.width = `${((hard / totalHard) * 100).toFixed(1)}%`;
+    const easyPct = totalEasy > 0 ? ((easy / totalEasy) * 100).toFixed(1) : '0.0';
+    const medPct = totalMed > 0 ? ((med / totalMed) * 100).toFixed(1) : '0.0';
+    const hardPct = totalHard > 0 ? ((hard / totalHard) * 100).toFixed(1) : '0.0';
+
+    if (lcEasyPct) lcEasyPct.textContent = `${easyPct}%`;
+    if (lcMedPct) lcMedPct.textContent = `${medPct}%`;
+    if (lcHardPct) lcHardPct.textContent = `${hardPct}%`;
+
+    if (lcEasyProgress) lcEasyProgress.style.width = `${easyPct}%`;
+    if (lcMedProgress) lcMedProgress.style.width = `${medPct}%`;
+    if (lcHardProgress) lcHardProgress.style.width = `${hardPct}%`;
 
     // 3. Composite Difficulty Distribution Bar
     if (total > 0) {
@@ -425,8 +437,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = b.icon;
             img.alt = b.displayName;
-            img.width = 20;
-            img.height = 20;
+            img.width = 18;
+            img.height = 18;
             img.loading = 'lazy';
             badgeEl.appendChild(img);
           }
@@ -441,30 +453,66 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 6. Recent Accepted Submissions
+    // 6. Recent Accepted Submissions (Deduplicated distinct problems)
     if (lcRecentSection && lcRecentList) {
       if (Array.isArray(profile.recentSubmissions) && profile.recentSubmissions.length > 0) {
         lcRecentList.innerHTML = '';
-        profile.recentSubmissions.slice(0, 5).forEach(sub => {
-          const a = document.createElement('a');
-          a.className = 'lc-recent-item';
-          a.href = sub.url || `https://leetcode.com/problems/${sub.titleSlug}/`;
-          a.target = '_blank';
-          a.rel = 'noopener';
+        const seen = new Set();
+        const distinctRecent = [];
 
-          const titleSpan = document.createElement('span');
-          titleSpan.className = 'lc-recent-title';
-          titleSpan.textContent = sub.title;
+        for (const sub of profile.recentSubmissions) {
+          const key = sub.titleSlug || sub.title;
+          if (key && !seen.has(key)) {
+            seen.add(key);
+            distinctRecent.push(sub);
+          }
+          if (distinctRecent.length >= 4) break;
+        }
 
-          const metaSpan = document.createElement('span');
-          metaSpan.className = 'lc-recent-meta';
-          metaSpan.textContent = formatSubmissionDate(sub.timestamp);
+        if (distinctRecent.length > 0) {
+          distinctRecent.forEach(sub => {
+            const a = document.createElement('a');
+            a.className = 'lc-recent-item';
+            a.href = sub.url || `https://leetcode.com/problems/${sub.titleSlug}/`;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.title = `${sub.title} (Accepted)`;
 
-          a.appendChild(titleSpan);
-          a.appendChild(metaSpan);
-          lcRecentList.appendChild(a);
-        });
-        lcRecentSection.style.display = 'block';
+            const leftDiv = document.createElement('div');
+            leftDiv.className = 'lc-recent-left';
+
+            const checkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            checkIcon.setAttribute('class', 'lc-recent-check');
+            checkIcon.setAttribute('width', '12');
+            checkIcon.setAttribute('height', '12');
+            checkIcon.setAttribute('viewBox', '0 0 24 24');
+            checkIcon.setAttribute('fill', 'none');
+            checkIcon.setAttribute('stroke', 'currentColor');
+            checkIcon.setAttribute('stroke-width', '2.5');
+            checkIcon.setAttribute('aria-hidden', 'true');
+            const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+            poly.setAttribute('points', '20 6 9 17 4 12');
+            checkIcon.appendChild(poly);
+
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'lc-recent-title';
+            titleSpan.textContent = sub.title;
+
+            leftDiv.appendChild(checkIcon);
+            leftDiv.appendChild(titleSpan);
+
+            const metaSpan = document.createElement('span');
+            metaSpan.className = 'lc-recent-meta';
+            metaSpan.textContent = formatSubmissionDate(sub.timestamp);
+
+            a.appendChild(leftDiv);
+            a.appendChild(metaSpan);
+            lcRecentList.appendChild(a);
+          });
+          lcRecentSection.style.display = 'block';
+        } else {
+          lcRecentSection.style.display = 'none';
+        }
       } else {
         lcRecentSection.style.display = 'none';
       }

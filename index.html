@@ -545,143 +545,196 @@
           </div>
         </div>
 
-        <!-- Secondary Stats Row -->
-        <div class="stats-row2">
-          <!-- LeetCode Solved & Profile Metrics Card -->
-          <div class="stat-card lc-overview-card" id="lcCard">
-            <div class="card-head">
+        <!-- Horizontal LeetCode Statistics Panel -->
+        <div class="stat-card lc-horizontal-card" id="lcCard">
+          <div class="lc-card-header">
+            <div class="lc-header-left">
               <span class="stat-platform-title">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFA116" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.977c.004.37.152.723.416.977l4.35 4.35a1.374 1.374 0 0 0 1.944 0l1.353-1.353a.35.35 0 0 0 0-.495l-3.359-3.359a.35.35 0 0 1 0-.495l3.359-3.359a.35.35 0 0 0 0-.495L13.483.438zm-6.1 12.016a1.374 1.374 0 0 0-.961.438L1.07 17.805a1.374 1.374 0 0 0 0 1.944l4.35 4.35a1.374 1.374 0 0 0 1.944 0l6.353-6.353a1.374 1.374 0 0 0 0-1.944l-4.35-4.35a1.374 1.374 0 0 0-.984-.436z"/></svg>
-                LEETCODE SOLVED
+                LEETCODE OVERVIEW
               </span>
+              <span class="lc-header-tag">ALGORITHMIC METRICS</span>
+            </div>
+
+            <div class="lc-header-right">
+              <div class="lc-sync-status" id="lcSyncStatus">
+                <span class="sync-dot" id="lcSyncDot"></span>
+                <span id="lcSyncText">Connecting to LeetCode...</span>
+                <span class="lc-sync-time" id="lcLastSynced"></span>
+              </div>
               <a href="https://leetcode.com/u/abhaysingh79/" id="lcProfileLink" target="_blank" rel="noopener" class="ext-link" aria-label="Open LeetCode profile in new tab">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
+          </div>
 
-            <!-- Profile Summary Bar -->
-            <div class="lc-profile-bar" id="lcProfileBar">
-              <img id="lcAvatar" src="assets/images/pfp.png" alt="LeetCode profile avatar" class="lc-avatar" width="36" height="36" loading="lazy">
-              <div class="lc-user-info">
-                <span class="lc-user-name" id="lcRealName">Abhay Singh</span>
-                <span class="lc-user-handle" id="lcUsername">@abhaysingh79</span>
+          <!-- Error banner (hidden by default) -->
+          <div class="lc-error-banner" id="lcErrorBanner" style="display: none;">
+            <span id="lcErrorMsg">Live synchronization failed.</span>
+            <button type="button" class="lc-retry-btn" id="lcRetryBtn">Retry</button>
+          </div>
+
+          <!-- 3-Column Horizontal Grid -->
+          <div class="lc-grid-3col">
+            <!-- Area A — Profile Identity -->
+            <div class="lc-col lc-col-identity">
+              <div class="lc-identity-profile" id="lcProfileBar">
+                <img id="lcAvatar" src="assets/images/pfp.png" alt="LeetCode profile avatar" class="lc-avatar" width="46" height="46" loading="lazy">
+                <div class="lc-user-info">
+                  <span class="lc-user-name" id="lcRealName">Abhay Singh</span>
+                  <span class="lc-user-handle" id="lcUsername">@abhaysingh79</span>
+                </div>
               </div>
+
               <div class="lc-pills">
                 <span class="lc-pill lc-pill-rank" id="lcGlobalRank" title="Global Ranking">Rank --</span>
                 <span class="lc-pill" id="lcContestRating" title="Contest Rating">Unrated</span>
               </div>
-            </div>
-            
-            <div class="big-num" id="lcTotal">--</div>
-            <div class="num-label" id="lcTotalLabel">Problems Solved</div>
 
-            <!-- Difficulty Breakdown with verified totals & individual tracks -->
-            <div class="diff-breakdown-list">
-              <div class="diff-item">
-                <div class="diff-item-head">
-                  <span class="easy-txt">Easy</span>
-                  <span class="count-txt" id="lcEasy">-- / --</span>
-                </div>
-                <div class="diff-item-track">
-                  <div class="diff-item-fill bar-easy" id="lcEasyProgress" style="width: 0%;"></div>
-                </div>
-              </div>
-              <div class="diff-item">
-                <div class="diff-item-head">
-                  <span class="med-txt">Medium</span>
-                  <span class="count-txt" id="lcMed">-- / --</span>
-                </div>
-                <div class="diff-item-track">
-                  <div class="diff-item-fill bar-med" id="lcMedProgress" style="width: 0%;"></div>
-                </div>
-              </div>
-              <div class="diff-item">
-                <div class="diff-item-head">
-                  <span class="hard-txt">Hard</span>
-                  <span class="count-txt" id="lcHard">-- / --</span>
-                </div>
-                <div class="diff-item-track">
-                  <div class="diff-item-fill bar-hard" id="lcHardProgress" style="width: 0%;"></div>
-                </div>
+              <a href="https://leetcode.com/u/abhaysingh79/" target="_blank" rel="noopener" class="lc-profile-action-btn">
+                <span>View LeetCode Profile</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+              </a>
+
+              <!-- Badges Section -->
+              <div class="lc-badges-section" id="lcBadgesSection" style="display: none;">
+                <div class="lc-section-title">Earned Badges</div>
+                <div class="lc-badges-grid" id="lcBadgesGrid"></div>
               </div>
             </div>
-            
-            <!-- Proportional difficulty distribution bar -->
-            <div class="diff-bar" role="progressbar" aria-label="Problem difficulty distribution">
-              <span class="bar-easy" id="lcEasyBar" style="width: 0%;" title="Easy"></span>
-              <span class="bar-med" id="lcMedBar" style="width: 0%;" title="Medium"></span>
-              <span class="bar-hard" id="lcHardBar" style="width: 0%;" title="Hard"></span>
+
+            <!-- Area B — Solved Statistics -->
+            <div class="lc-col lc-col-stats">
+              <div class="lc-solved-summary">
+                <div class="big-num-wrapper">
+                  <span class="big-num" id="lcTotal">--</span>
+                  <span class="big-num-sub">Solved</span>
+                </div>
+                <div class="num-label" id="lcTotalLabel">Problems Solved</div>
+              </div>
+
+              <!-- Composite difficulty distribution bar -->
+              <div class="diff-bar" role="progressbar" aria-label="Problem difficulty distribution">
+                <span class="bar-easy" id="lcEasyBar" style="width: 0%;" title="Easy"></span>
+                <span class="bar-med" id="lcMedBar" style="width: 0%;" title="Medium"></span>
+                <span class="bar-hard" id="lcHardBar" style="width: 0%;" title="Hard"></span>
+              </div>
+
+              <!-- Horizontal 3-Indicator Row for Easy / Medium / Hard -->
+              <div class="diff-horiz-row">
+                <!-- Easy Indicator -->
+                <div class="diff-box diff-box-easy">
+                  <div class="diff-box-top">
+                    <span class="diff-name easy-txt">
+                      <span class="diff-dot easy-dot"></span>Easy
+                    </span>
+                    <span class="diff-pct-badge" id="lcEasyPct">--%</span>
+                  </div>
+                  <div class="diff-count" id="lcEasy">-- / --</div>
+                  <div class="diff-item-track">
+                    <div class="diff-item-fill bar-easy" id="lcEasyProgress" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Medium Indicator -->
+                <div class="diff-box diff-box-med">
+                  <div class="diff-box-top">
+                    <span class="diff-name med-txt">
+                      <span class="diff-dot med-dot"></span>Medium
+                    </span>
+                    <span class="diff-pct-badge" id="lcMedPct">--%</span>
+                  </div>
+                  <div class="diff-count" id="lcMed">-- / --</div>
+                  <div class="diff-item-track">
+                    <div class="diff-item-fill bar-med" id="lcMedProgress" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Hard Indicator -->
+                <div class="diff-box diff-box-hard">
+                  <div class="diff-box-top">
+                    <span class="diff-name hard-txt">
+                      <span class="diff-dot hard-dot"></span>Hard
+                    </span>
+                    <span class="diff-pct-badge" id="lcHardPct">--%</span>
+                  </div>
+                  <div class="diff-count" id="lcHard">-- / --</div>
+                  <div class="diff-item-track">
+                    <div class="diff-item-fill bar-hard" id="lcHardProgress" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Badges Section -->
-            <div class="lc-badges-section" id="lcBadgesSection" style="display: none;">
-              <div class="lc-section-title">Earned Badges</div>
-              <div class="lc-badges-grid" id="lcBadgesGrid"></div>
-            </div>
+            <!-- Area C — Recent Accepted Activity -->
+            <div class="lc-col lc-col-activity">
+              <div class="lc-col-head">
+                <span class="lc-col-title">Recent Submissions</span>
+                <span class="lc-status-tag">ACCEPTED</span>
+              </div>
 
-            <!-- Recent Accepted Questions -->
-            <div class="lc-recent-section" id="lcRecentSection" style="display: none;">
-              <div class="lc-section-title">Recent Accepted Submissions</div>
-              <div class="lc-recent-list" id="lcRecentList"></div>
-            </div>
-
-            <!-- Live Status & Timestamp -->
-            <div class="lc-sync-status" id="lcSyncStatus">
-              <span class="sync-dot" id="lcSyncDot"></span>
-              <span id="lcSyncText">Connecting to LeetCode...</span>
-              <span class="lc-sync-time" id="lcLastSynced"></span>
-            </div>
-
-            <!-- Error banner (hidden by default) -->
-            <div class="lc-error-banner" id="lcErrorBanner" style="display: none;">
-              <span id="lcErrorMsg">Live synchronization failed.</span>
-              <button type="button" class="lc-retry-btn" id="lcRetryBtn">Retry</button>
+              <div class="lc-recent-section" id="lcRecentSection" style="display: none;">
+                <div class="lc-recent-list" id="lcRecentList"></div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Developer Platforms & Competitive Profiles -->
-          <div class="stat-card">
-            <div class="card-head">
-              <span class="stat-platform-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                DEVELOPER PROFILES
-              </span>
-            </div>
+        <!-- Developer Profiles: Compact Horizontal Row -->
+        <div class="profiles-horiz-section">
+          <div class="profiles-section-header">
+            <span class="stat-platform-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              DEVELOPER PROFILES
+            </span>
+            <span class="profiles-sub-txt">External repositories, competitive algorithms & certifications</span>
+          </div>
 
-            <div class="comp-rows">
-              <!-- GitHub Row -->
-              <div class="comp-row">
-                <div class="comp-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  <span>GitHub <small class="text-dim">(@pyakio)</small></span>
-                </div>
-                <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="view-profile-btn">
-                  View Profile
-                </a>
+          <div class="profiles-cards-grid">
+            <!-- GitHub Card -->
+            <a href="https://github.com/pyakio" target="_blank" rel="noopener" class="profile-card-item">
+              <div class="pci-icon pci-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               </div>
-
-              <!-- GeeksforGeeks Row (Correctly labeled!) -->
-              <div class="comp-row">
-                <div class="comp-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2f8d46" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-                  <span>GeeksforGeeks</span>
+              <div class="pci-content">
+                <div class="pci-title-row">
+                  <span class="pci-name">GitHub</span>
+                  <svg class="pci-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
                 </div>
-                <a href="https://www.geeksforgeeks.org/profile/anupamis0o?tab=activity" target="_blank" rel="noopener" class="view-profile-btn">
-                  View Profile
-                </a>
+                <div class="pci-handle">@pyakio</div>
+                <div class="pci-desc">Open source & repositories</div>
               </div>
+            </a>
 
-              <!-- HackerRank Row -->
-              <div class="comp-row">
-                <div class="comp-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2EC866" aria-hidden="true"><path d="M12 0L1.75 6v12L12 24l10.25-6V6L12 0zm-1.25 17.5h-2.5V6.5h2.5v11zm5 0h-2.5V6.5h2.5v11z"/></svg>
-                  <span>HackerRank</span>
-                </div>
-                <a href="https://www.hackerrank.com/profile/anupam_sng28" target="_blank" rel="noopener" class="view-profile-btn">
-                  View Profile
-                </a>
+            <!-- GeeksforGeeks Card -->
+            <a href="https://www.geeksforgeeks.org/profile/anupamis0o?tab=activity" target="_blank" rel="noopener" class="profile-card-item">
+              <div class="pci-icon pci-gfg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2f8d46" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
               </div>
-            </div>
+              <div class="pci-content">
+                <div class="pci-title-row">
+                  <span class="pci-name">GeeksforGeeks</span>
+                  <svg class="pci-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                </div>
+                <div class="pci-handle">@anupamis0o</div>
+                <div class="pci-desc">Algorithms & DSA practice</div>
+              </div>
+            </a>
+
+            <!-- HackerRank Card -->
+            <a href="https://www.hackerrank.com/profile/anupam_sng28" target="_blank" rel="noopener" class="profile-card-item">
+              <div class="pci-icon pci-hr">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2EC866" aria-hidden="true"><path d="M12 0L1.75 6v12L12 24l10.25-6V6L12 0zm-1.25 17.5h-2.5V6.5h2.5v11zm5 0h-2.5V6.5h2.5v11z"/></svg>
+              </div>
+              <div class="pci-content">
+                <div class="pci-title-row">
+                  <span class="pci-name">HackerRank</span>
+                  <svg class="pci-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                </div>
+                <div class="pci-handle">@anupam_sng28</div>
+                <div class="pci-desc">Problem solving & certifications</div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
