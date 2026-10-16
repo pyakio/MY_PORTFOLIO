@@ -1686,7 +1686,7 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   FOOTER PANEL (RELATIVE ASSET PATH & CLEAN DESIGN)
+   FOOTER PANEL (PIXEL-ART ANIMATED WORKSTATION & CLEAN OVERLAY)
    ========================================================================== */
 .footer-panel {
   max-width: 820px;
@@ -1696,21 +1696,28 @@ h1, h2, h3, h4 {
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-md);
+  background: var(--surface);
 }
 
 .footer-banner-container {
   position: relative;
   width: 100%;
-  height: 160px;
+  height: 240px;
   overflow: hidden;
+  background-color: #0d1117;
 }
 
 .footer-illustration {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 46%;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .footer-overlay-text {
@@ -1718,28 +1725,75 @@ h1, h2, h3, h4 {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px 20px 14px;
-  background: linear-gradient(to top, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.6) 70%, transparent 100%);
+  padding: 30px 20px 14px;
+  background: linear-gradient(to top, rgba(9, 9, 11, 0.94) 0%, rgba(9, 9, 11, 0.65) 65%, transparent 100%);
   text-align: center;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .footer-overlay-text p {
   font-size: 13.5px;
   font-weight: 500;
   color: var(--text);
+  margin-bottom: 3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
 .footer-overlay-text a {
   color: var(--text-bright);
   font-weight: 700;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-overlay-text a:hover {
+  color: var(--accent);
 }
 
 .footer-overlay-text .yr {
   color: var(--muted);
   font-size: 12px;
-  margin-top: 3px;
   display: block;
   font-family: var(--font-mono);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 768px) {
+  .footer-panel {
+    margin: 56px 16px 0;
+    border-radius: var(--radius-md);
+  }
+  .footer-banner-container {
+    height: 210px;
+  }
+  .footer-illustration {
+    object-position: 55% 45%;
+  }
+  .footer-overlay-text {
+    padding: 24px 16px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-panel {
+    margin: 44px 12px 0;
+  }
+  .footer-banner-container {
+    height: 185px;
+  }
+  .footer-illustration {
+    object-position: 55% 45%;
+  }
+  .footer-overlay-text {
+    padding: 20px 12px 10px;
+  }
+  .footer-overlay-text p {
+    font-size: 12.5px;
+  }
+  .footer-overlay-text .yr {
+    font-size: 11px;
+  }
 }
 
 /* ==========================================================================
